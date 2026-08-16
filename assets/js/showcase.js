@@ -80,4 +80,17 @@ var SITES = [
     card.appendChild(body);
     grid.appendChild(card);
   });
+
+  // Closing tile. Keeps the row from looking half-empty while the list of
+  // demos is still short, and gives the section somewhere to point.
+  var cta = document.createElement("a");
+  cta.className = "site-card site-card-cta";
+  cta.href = "#contact";
+  cta.innerHTML =
+    '<div class="site-body">' +
+      '<h3>Your site here</h3>' +
+      '<p>Every demo started as a conversation about what the business actually needed. Yours can be the next one.</p>' +
+      '<span class="site-link">Start a project</span>' +
+    '</div>';
+  grid.appendChild(cta);
 })();
