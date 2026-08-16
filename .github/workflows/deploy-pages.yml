@@ -1,0 +1,61 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    # The repo's default branch. Rename this if the default branch changes.
+    branches: ["claude/elenas-cake-website-x8t0xo"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it mid-publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure Pages
+        # enablement turns Pages on the first time this runs, so the site
+        # goes live without anyone touching repo settings.
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Assemble site
+        run: |
+          mkdir -p _site
+          tar -cf - --exclude=./.git --exclude=./.github --exclude=./_site . \
+            | tar -xf - -C _site
+
+          # Pages has no rewrite rules, so give each demo a real directory at
+          # the short path. Mirrors what vercel.json does with rewrites, and
+          # keeps /sites/... working so the hub's own links still resolve.
+          mkdir -p _site/elena
+          tar -cf - -C sites/elenas-cakes . | tar -xf - -C _site/elena
+
+          # Serve the files as-is instead of running them through Jekyll.
+          touch _site/.nojekyll
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
