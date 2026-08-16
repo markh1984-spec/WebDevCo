@@ -12,7 +12,7 @@
 var SITES = [
   {
     name: "Elena's Cakes",
-    blurb: "A single-page site for a home baker — gallery, pricing and an enquiry form ready to wire to a backend.",
+    blurb: "A single-page site for a home baker — themed birthday cakes, a lightbox gallery, pricing and an enquiry form ready to wire to a backend.",
     url: "sites/elenas-cakes/index.html",
     thumb: "assets/img/elenas-cakes.jpg",
     tags: ["Static", "Responsive", "Lightbox gallery", "Enquiry form"]

@@ -251,9 +251,11 @@ a { color: var(--blush-deep); }
 }
 .gallery-item:hover figcaption,
 .gallery-item:focus-visible figcaption { opacity: 1; transform: none; }
-/* Tall feature tile every fifth photo, on wide screens only */
+/* Tall feature tile every fifth photo, on wide screens only.
+   Only switches on once there are enough photos to fill the row it
+   creates (site.js adds .has-feature at 8+) — otherwise it leaves a hole. */
 @media (min-width: 900px) {
-  .gallery-item:nth-child(5n + 1) { grid-row: span 2; aspect-ratio: 1 / 2.06; }
+  .gallery.has-feature .gallery-item:nth-child(5n + 1) { grid-row: span 2; aspect-ratio: 1 / 2.06; }
 }
 
 /* ── About ─────────────────────────────────────────────── */

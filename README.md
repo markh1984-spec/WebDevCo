@@ -46,14 +46,19 @@ The gallery builds itself from that list, so there's no HTML to touch. If a
 filename in the list doesn't exist yet, that tile is quietly dropped rather
 than showing a broken image.
 
-Three photos are also referenced directly in `index.html` and are worth
-replacing with the best shots:
+Three photos are referenced directly in `index.html` rather than through the
+gallery list:
 
 | File | Where it appears |
 |---|---|
 | `cake-01.jpg` | main hero photo (portrait, roughly 4:5) |
 | `cake-02.jpg` | small overlapping hero photo (square) |
-| `elena.jpg` | the About section (portrait, roughly 4:5) |
+| `inside.jpg` | the About section (portrait, roughly 4:5) |
+
+The current photos are crops of three real photos of Elena's cakes. All EXIF
+metadata — including GPS coordinates and capture dates — was stripped before
+they were committed. Do the same for any photo added later: phone photos carry
+the location they were taken at, which for a home baker is a home address.
 
 ## Adding another example site
 
@@ -93,5 +98,6 @@ The endpoint needs to allow CORS from wherever the site is hosted.
 - Keyboard accessible: skip links, focus styles, and a lightbox that traps
   Escape and arrow keys.
 - Respects `prefers-reduced-motion`.
-- Content on the cake site (prices, reviews, contact details) is placeholder
-  copy — it needs replacing with Elena's real details before going live.
+- The photos are real. The words are not: prices, reviews, phone number and
+  email are all placeholder copy and must be replaced with Elena's real
+  details before this goes anywhere near a live domain.

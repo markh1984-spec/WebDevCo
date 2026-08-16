@@ -79,6 +79,10 @@
     grid.appendChild(fig);
   });
 
+  // The tall feature tiles only look right once there are enough photos
+  // to fill the extra row they create.
+  if (grid.children.length >= 8) grid.classList.add("has-feature");
+
   /* ── Lightbox ────────────────────────────────────────── */
   var box = document.getElementById("lightbox");
   var boxImg = document.getElementById("lightbox-img");

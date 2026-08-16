@@ -7,17 +7,17 @@
    2. Add a line to the list below.
 
    `src`     — filename inside assets/img/
-   `alt`     — description for screen readers (please fill in)
+   `alt`     — description for screen readers
    `caption` — shown on hover and in the lightbox
+
+   Filenames that don't exist yet are skipped, so nothing
+   breaks while photos are being swapped in.
    ========================================================== */
 
 window.GALLERY_PHOTOS = [
-  { src: "cake-01.jpg", alt: "Tiered celebration cake dressed with fresh flowers", caption: "Three-tier wedding cake, fresh florals" },
-  { src: "cake-02.jpg", alt: "Hand-piped buttercream cake in soft pastels",       caption: "Hand-piped buttercream" },
-  { src: "cake-03.jpg", alt: "Chocolate drip cake topped with berries",           caption: "Belgian chocolate drip" },
-  { src: "cake-04.jpg", alt: "Birthday cake with candles and sprinkles",          caption: "Birthday classic" },
-  { src: "cake-05.jpg", alt: "Naked sponge cake layered with cream and fruit",    caption: "Semi-naked sponge, summer fruit" },
-  { src: "cake-06.jpg", alt: "Box of iced cupcakes",                              caption: "Cupcake box of twelve" },
-  { src: "cake-07.jpg", alt: "Pastel christening cake with delicate detailing",   caption: "Christening cake" },
-  { src: "cake-08.jpg", alt: "Slice of cake showing the sponge layers inside",    caption: "Inside every slice" }
+  { src: "cake-01.jpg", alt: "Two-tier birthday cake with a pink top tier, silver glitter spider emblem and turquoise bottom tier", caption: "Two-tier spider birthday cake" },
+  { src: "cake-03.jpg", alt: "Cut cake showing six layers of rainbow sponge in pink, purple, orange, green and blue", caption: "Six-layer rainbow sponge inside" },
+  { src: "cake-02.jpg", alt: "Close-up of the silver glitter spider emblem on pink buttercream with pearl sprinkles", caption: "Hand-finished buttercream detail" },
+  { src: "cake-04.jpg", alt: "Gold Happy Birthday topper and a Ghost-Spider figure on the turquoise tier", caption: "Toppers to match the theme" },
+  { src: "cake-05.jpg", alt: "Turquoise buttercream cake cut open to show vanilla sponge layered with jam and cream", caption: "Vanilla sponge, jam and cream" }
 ];
