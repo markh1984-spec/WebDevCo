@@ -23,8 +23,12 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Configure Pages
-        # enablement turns Pages on the first time this runs, so the site
-        # goes live without anyone touching repo settings.
+        # Pages must be switched on once by hand, in
+        # Settings -> Pages -> Build and deployment -> Source -> GitHub Actions.
+        # enablement only works for tokens allowed to create a Pages site, and
+        # the default Actions token isn't ("Resource not accessible by
+        # integration"). It's kept here so the step is a no-op once Pages
+        # exists, and still works on repos where the token does have rights.
         uses: actions/configure-pages@v5
         with:
           enablement: true

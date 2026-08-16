@@ -60,6 +60,28 @@ metadata — including GPS coordinates and capture dates — was stripped before
 they were committed. Do the same for any photo added later: phone photos carry
 the location they were taken at, which for a home baker is a home address.
 
+## Deploying to GitHub Pages
+
+`.github/workflows/deploy-pages.yml` builds and publishes on every push to the
+default branch, and can be run by hand from the Actions tab.
+
+**One-time setup.** Pages has to be switched on before the first deploy can
+succeed: **Settings → Pages → Build and deployment → Source → GitHub Actions**.
+The workflow can't do this itself — creating a Pages site needs permissions the
+default Actions token doesn't have, so the run fails with
+`Resource not accessible by integration` until the setting is flipped.
+
+Once it's on, the site is at `https://markh1984-spec.github.io/WebDevCo/`:
+
+| URL | Serves |
+|---|---|
+| `/WebDevCo/` | the WebDevCo hub |
+| `/WebDevCo/elena/` | `sites/elenas-cakes/` |
+
+Pages has no rewrite rules, so the workflow copies each demo into a real
+directory at its short path. The original `/sites/...` paths are published too,
+which is what the hub's own cards link to.
+
 ## Deploying to Vercel
 
 Import the repo at [vercel.com/new](https://vercel.com/new). It's a static
