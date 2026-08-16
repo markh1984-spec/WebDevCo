@@ -60,12 +60,37 @@ metadata — including GPS coordinates and capture dates — was stripped before
 they were committed. Do the same for any photo added later: phone photos carry
 the location they were taken at, which for a home baker is a home address.
 
+## Deploying to Vercel
+
+Import the repo at [vercel.com/new](https://vercel.com/new). It's a static
+site, so leave the framework preset as **Other** and leave the build and
+output settings empty — there's nothing to build.
+
+`vercel.json` maps a clean path to each demo, so the link you send a client
+isn't the folder structure:
+
+| URL | Serves |
+|---|---|
+| `/` | the WebDevCo hub |
+| `/elena` | `sites/elenas-cakes/` |
+
+`/elena` redirects to `/elena/` first. That trailing slash matters: the demo
+sites use relative asset paths, so without it the browser would resolve
+`assets/css/style.css` against the domain root and load the hub's stylesheet
+instead. Keep that redirect when adding new paths.
+
+To give a demo its own subdomain instead (`elenas-cakes.vercel.app`), create a
+second Vercel project from the same repo and set **Root Directory** to
+`sites/elenas-cakes`. No rewrites needed in that setup.
+
 ## Adding another example site
 
 1. Create `sites/<your-site>/` with its own `index.html` and assets.
 2. Optionally add a screenshot at `assets/img/<your-site>.jpg` (16:10). Without
    one, the card falls back to a plain tile with the site name.
 3. Add an entry to the `SITES` array at the top of `assets/js/showcase.js`.
+4. Optionally add a `/<name>` redirect and rewrite pair to `vercel.json`, so
+   the site gets a clean URL too.
 
 ## Wiring the enquiry form to a backend
 
