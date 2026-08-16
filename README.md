@@ -1,0 +1,97 @@
+# WebDevCo
+
+A showcase site that hosts live example websites. The root page is the WebDevCo
+hub; each demo lives in its own folder under `sites/` and is completely
+self-contained.
+
+Everything is plain static HTML, CSS and vanilla JS — no build step, no
+dependencies, no framework. Open `index.html` in a browser and it works.
+
+## Layout
+
+```
+index.html                     WebDevCo hub — lists the example sites
+assets/
+  css/site.css                 hub styles
+  js/showcase.js               ← the list of example sites lives here
+  img/                         hub thumbnails
+sites/
+  elenas-cakes/                Example site #1
+    index.html
+    assets/css/style.css
+    assets/js/gallery.js       ← the list of gallery photos lives here
+    assets/js/site.js          nav, lightbox, form, scroll reveals
+    assets/img/                cake photos
+```
+
+## Running it locally
+
+Any static server will do:
+
+```bash
+python3 -m http.server 8000
+# then open http://localhost:8000
+```
+
+## Adding Elena's real photos
+
+The images currently in `sites/elenas-cakes/assets/img/` are placeholders, so
+the site looks finished before the real photos arrive. To swap them in:
+
+1. Drop the photos into `sites/elenas-cakes/assets/img/`.
+2. Open `sites/elenas-cakes/assets/js/gallery.js` and edit the list — one line
+   per photo, with a filename, an `alt` description and a caption.
+
+The gallery builds itself from that list, so there's no HTML to touch. If a
+filename in the list doesn't exist yet, that tile is quietly dropped rather
+than showing a broken image.
+
+Three photos are also referenced directly in `index.html` and are worth
+replacing with the best shots:
+
+| File | Where it appears |
+|---|---|
+| `cake-01.jpg` | main hero photo (portrait, roughly 4:5) |
+| `cake-02.jpg` | small overlapping hero photo (square) |
+| `elena.jpg` | the About section (portrait, roughly 4:5) |
+
+## Adding another example site
+
+1. Create `sites/<your-site>/` with its own `index.html` and assets.
+2. Optionally add a screenshot at `assets/img/<your-site>.jpg` (16:10). Without
+   one, the card falls back to a plain tile with the site name.
+3. Add an entry to the `SITES` array at the top of `assets/js/showcase.js`.
+
+## Wiring the enquiry form to a backend
+
+The form on the cake site validates in the browser and, by default, just
+reports that it isn't connected. To make it live, set `ENDPOINT` near the
+bottom of `sites/elenas-cakes/assets/js/site.js`:
+
+```js
+var ENDPOINT = "https://api.example.com/enquiries";
+```
+
+It then POSTs JSON and handles the success and failure states:
+
+```json
+{
+  "name":     "Sophie",
+  "email":    "sophie@example.com",
+  "occasion": "Wedding",
+  "date":     "2026-09-12",
+  "details":  "Three tiers, lemon and elderflower…"
+}
+```
+
+Any 2xx response is treated as success; anything else shows the error message.
+The endpoint needs to allow CORS from wherever the site is hosted.
+
+## Notes
+
+- Responsive down to 320px, tested at 390px and 1440px.
+- Keyboard accessible: skip links, focus styles, and a lightbox that traps
+  Escape and arrow keys.
+- Respects `prefers-reduced-motion`.
+- Content on the cake site (prices, reviews, contact details) is placeholder
+  copy — it needs replacing with Elena's real details before going live.

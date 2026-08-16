@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebDevCo — Websites, built fast</title>
+<meta name="description" content="WebDevCo builds fast, hand-crafted websites for small businesses. Browse live example sites.">
+<meta property="og:title" content="WebDevCo — Websites, built fast">
+<meta property="og:description" content="Fast, hand-crafted websites for small businesses. Browse live example sites.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark">&lt;/&gt;</span>
+      <span class="brand-text">WebDevCo</span>
+    </a>
+    <nav class="site-nav">
+      <a href="#work">Example sites</a>
+      <a href="#how">How it works</a>
+      <a class="nav-cta" href="#contact">Start a project</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Design &amp; front-end · Backends that scale</p>
+      <h1>Websites, built <span class="accent">fast</span>.</h1>
+      <p class="lede">
+        We design and build sites for small businesses — properly responsive,
+        fast to load, and easy to keep updated. Every example below is a real,
+        live page you can click through.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#work">Browse example sites</a>
+        <a class="btn btn-ghost" href="#contact">Start a project</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow">Example sites</p>
+        <h2>Live demos</h2>
+        <p class="section-lede">Click any card to open the full site.</p>
+      </header>
+      <div class="site-grid" id="site-grid">
+        <!-- Filled by assets/js/showcase.js — add new example sites there. -->
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="how">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2>Three steps, no jargon</h2>
+      </header>
+      <ol class="steps">
+        <li>
+          <span class="step-num">01</span>
+          <h3>Tell us about it</h3>
+          <p>What you do, who it's for, and what the site needs to achieve. A short call is usually enough.</p>
+        </li>
+        <li>
+          <span class="step-num">02</span>
+          <h3>See it live</h3>
+          <p>We build a real, working version you can click through on your phone — not a flat mockup.</p>
+        </li>
+        <li>
+          <span class="step-num">03</span>
+          <h3>Go live</h3>
+          <p>We handle hosting, domains and the technical bits, then hand you something simple to update.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="wrap contact-inner">
+      <div>
+        <p class="eyebrow">Get in touch</p>
+        <h2>Start a project</h2>
+        <p class="section-lede">
+          Tell us what you need and we'll come back with an approach and a price.
+        </p>
+      </div>
+      <a class="btn btn-primary btn-lg" href="mailto:hello@webdevco.example">hello@webdevco.example</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>© <span id="year">2026</span> WebDevCo</p>
+    <p>Built by hand. No page builders.</p>
+  </div>
+</footer>
+
+<script src="assets/js/showcase.js"></script>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
