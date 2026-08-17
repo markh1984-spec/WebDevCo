@@ -16,6 +16,13 @@ var SITES = [
     url: "sites/elenas-cakes/index.html",
     thumb: "assets/img/elenas-cakes.jpg",
     tags: ["Static", "Responsive", "Lightbox gallery", "Enquiry form"]
+  },
+  {
+    name: "DeadDad.AI",
+    blurb: "A single-page launch site for a fictional product. Hand-drawn SVG character art, split down the middle, with a signup ready to wire to a backend.",
+    url: "sites/deaddad-ai/index.html",
+    thumb: "assets/img/deaddad-ai.jpg",
+    tags: ["Static", "Responsive", "SVG illustration", "Signup form"]
   }
 ];
 

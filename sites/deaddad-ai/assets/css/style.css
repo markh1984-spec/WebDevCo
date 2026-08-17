@@ -1,0 +1,278 @@
+/* ==========================================================
+   DeadDad.AI
+
+   Committed single-theme: a dark identity, so every colour is
+   set explicitly rather than inherited from the host.
+
+   The palette inverts the usual sci-fi split — the MACHINE is
+   warm (amber), the FLESH is cold (grey-green). Warm reads as
+   the thing pretending to be alive.
+   ========================================================== */
+
+:root {
+  --void:     #0A0C0B;
+  --void-2:   #10130F;
+  --panel:    #161A15;
+
+  --bone:     #E9E5D7;
+  --muted:    #8D9384;   /* grey, biased green toward the flesh */
+
+  --amber:      #F0A83C;
+  --amber-lift: #FFC470;
+  --amber-deep: #8A4C0E;
+
+  --flesh:    #7C8A63;
+  --line:     #242A22;
+
+  --display: "Big Shoulders Display", "Arial Narrow", sans-serif;
+  --sans:    "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:    "Space Mono", ui-monospace, Menlo, monospace;
+
+  --wrap: 1220px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--void);
+  color: var(--bone);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img, svg { max-width: 100%; }
+p { margin: 0 0 1em; }
+a { color: var(--amber); }
+
+.wrap { width: min(100% - 2.5rem, var(--wrap)); margin-inline: auto; }
+
+.sr-only, .skip-link {
+  position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+.skip-link:focus {
+  width: auto; height: auto; clip: auto;
+  left: 0; top: 0; z-index: 200;
+  background: var(--amber); color: var(--void);
+  padding: .75rem 1.25rem; font-weight: 600;
+}
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+
+/* Film grain over the whole page — keeps the flat dark from
+   looking like an empty div. */
+.grain {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  opacity: .05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── Header ────────────────────────────────────────────── */
+.site-header { position: relative; z-index: 2; border-bottom: 1px solid var(--line); }
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; padding: 1.1rem 0;
+}
+.brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; color: var(--bone); }
+.brand-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 14px rgba(240, 168, 60, .85);
+}
+.brand-text {
+  font-family: var(--display);
+  font-size: 1.7rem; font-weight: 800;
+  letter-spacing: .01em; text-transform: uppercase;
+}
+.brand-tld { color: var(--amber); }
+
+.status {
+  margin: 0;
+  font-family: var(--mono); font-size: .72rem;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted);
+  display: flex; align-items: center; gap: .6rem;
+}
+.status-led {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--flesh);
+  animation: blink 2.4s steps(1, end) infinite;
+}
+@keyframes blink { 0%, 70% { opacity: 1; } 71%, 100% { opacity: .25; } }
+
+/* ── Hero ──────────────────────────────────────────────── */
+.hero { position: relative; z-index: 2; padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(3rem, 6vw, 5rem); }
+.hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.eyebrow {
+  font-family: var(--mono); font-size: .72rem; font-weight: 700;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--amber);
+  margin: 0 0 1.4rem;
+  display: flex; align-items: center; gap: .8rem;
+}
+.eyebrow::before { content: ""; width: 30px; height: 2px; background: var(--amber); flex: none; }
+
+h1 {
+  font-family: var(--display);
+  font-size: clamp(3.4rem, 8vw, 6.5rem);
+  font-weight: 800; line-height: .92;
+  letter-spacing: .005em; text-transform: uppercase;
+  margin: 0 0 .45em; text-wrap: balance;
+}
+
+/* Chromatic split on the one word that carries the joke. */
+.glitch { position: relative; color: var(--amber); display: inline-block; }
+.glitch::before, .glitch::after {
+  content: attr(data-text);
+  position: absolute; left: 0; top: 0;
+  width: 100%; overflow: hidden;
+}
+/* The split layers sit at zero until the glitch fires, so the word stays
+   clean amber instead of being muddied by two tinted copies. */
+.glitch::before { color: #6FD3C4; animation: shearA 6s infinite; }
+.glitch::after  { color: #C8524B; animation: shearB 6s infinite; }
+@keyframes shearA {
+  0%, 91%, 100% { opacity: 0; transform: none; }
+  92% { opacity: .7; transform: translate(-4px, -2px); clip-path: inset(12% 0 54% 0); }
+  95% { opacity: .7; transform: translate(3px, 2px);   clip-path: inset(58% 0 14% 0); }
+  97% { opacity: 0;  transform: none; }
+}
+@keyframes shearB {
+  0%, 91%, 100% { opacity: 0; transform: none; }
+  93% { opacity: .6; transform: translate(5px, 2px);   clip-path: inset(48% 0 22% 0); }
+  96% { opacity: .6; transform: translate(-4px, -1px); clip-path: inset(8% 0 66% 0); }
+  98% { opacity: 0;  transform: none; }
+}
+
+.lede { color: var(--muted); font-size: 1.1rem; max-width: 48ch; }
+
+/* ── Signup ────────────────────────────────────────────── */
+.signup {
+  display: flex; flex-wrap: wrap; gap: .7rem;
+  margin: 2.2rem 0 1.8rem;
+}
+.signup input {
+  flex: 1 1 15rem;
+  font: inherit; font-size: .98rem;
+  padding: .95rem 1.1rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  color: var(--bone);
+}
+.signup input::placeholder { color: #6E7468; }
+.signup input:focus { border-color: var(--amber); outline: none; }
+.signup input[aria-invalid="true"] { border-color: #C8524B; }
+
+.btn {
+  font-family: var(--display);
+  font-size: 1.25rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  padding: .7rem 2rem;
+  background: var(--amber); color: #17120A;
+  border: 1px solid var(--amber);
+  border-radius: 3px; cursor: pointer;
+  transition: background .18s ease, transform .18s ease;
+}
+.btn:hover { background: var(--amber-lift); transform: translateY(-2px); }
+
+.form-status {
+  flex: 1 0 100%; margin: 0;
+  font-family: var(--mono); font-size: .78rem;
+  color: var(--muted); min-height: 1.3em;
+}
+.form-status.is-ok { color: var(--amber); }
+.form-status.is-error { color: #D2685F; }
+
+.claims {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: .5rem 1.6rem;
+  font-family: var(--mono); font-size: .76rem;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--muted);
+}
+.claims li { display: flex; align-items: center; gap: .55rem; }
+.claims li::before { content: ""; width: 5px; height: 5px; background: var(--flesh); flex: none; }
+
+/* ── The specimen ──────────────────────────────────────── */
+.hero-art { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+
+.face {
+  width: 100%; max-width: 440px; height: auto;
+  filter: drop-shadow(0 26px 60px rgba(0, 0, 0, .75));
+}
+.optic { animation: pulse 3.6s ease-in-out infinite; transform-origin: 362px 330px; }
+@keyframes pulse {
+  0%, 100% { opacity: .88; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.06); }
+}
+.leds rect { animation: leds 1.8s steps(1, end) infinite; }
+.leds rect:nth-child(2) { animation-delay: .6s; }
+.leds rect:nth-child(3) { animation-delay: 1.2s; }
+@keyframes leds { 0%, 40% { opacity: 1; } 41%, 100% { opacity: .18; } }
+
+.seam { animation: seamPulse 3.6s ease-in-out infinite; }
+@keyframes seamPulse { 0%, 100% { opacity: .35; } 50% { opacity: .7; } }
+
+.scan { animation: sweep 7s linear infinite; }
+@keyframes sweep {
+  0%,  6%  { transform: translateY(80px);  opacity: 0; }
+  10%      { opacity: .35; }
+  90%      { opacity: .35; }
+  100%     { transform: translateY(600px); opacity: 0; }
+}
+
+.readout {
+  list-style: none; margin: 0; padding: 0;
+  width: 100%; max-width: 440px;
+  border-top: 1px solid var(--line);
+}
+.readout li {
+  display: flex; justify-content: space-between; gap: 1rem;
+  padding: .6rem 0;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--mono); font-size: .72rem;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.readout span { color: var(--muted); }
+.readout b { color: var(--amber); font-weight: 400; }
+
+/* ── Footer ────────────────────────────────────────────── */
+.site-footer { position: relative; z-index: 2; border-top: 1px solid var(--line); padding: 1.6rem 0; }
+.footer-inner {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem;
+  font-family: var(--mono); font-size: .72rem;
+  letter-spacing: .06em; color: var(--muted);
+}
+.footer-inner p { margin: 0; }
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 940px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-art { order: -1; }
+  .face { max-width: 330px; }
+}
+
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .status { display: none; }
+  .signup input { flex-basis: 100%; }
+  .btn { width: 100%; }
+}
+
+/* Motion is decorative here — none of it carries meaning. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition-duration: .001ms !important;
+  }
+}
