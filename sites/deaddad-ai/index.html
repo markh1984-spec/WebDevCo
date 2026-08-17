@@ -82,43 +82,69 @@
             machine half with a glowing amber optic on the right.</desc>
 
           <defs>
-            <linearGradient id="fleshGrad" x1="0" y1="0" x2=".35" y2="1">
-              <stop offset="0"   stop-color="#8D9872"/>
-              <stop offset=".5"  stop-color="#6F7B58"/>
-              <stop offset="1"   stop-color="#414A33"/>
+            <!-- Key light sits upper-left; every highlight and shadow below
+                 is placed against that one direction, on both halves. -->
+            <linearGradient id="fleshGrad" x1=".15" y1="0" x2=".8" y2="1">
+              <stop offset="0"   stop-color="#96A079"/>
+              <stop offset=".42" stop-color="#77835F"/>
+              <stop offset="1"   stop-color="#3B4430"/>
             </linearGradient>
 
-            <linearGradient id="metalGrad" x1="1" y1="0" x2=".25" y2="1">
-              <stop offset="0"   stop-color="#C8CED3"/>
-              <stop offset=".45" stop-color="#8E969D"/>
-              <stop offset="1"   stop-color="#42484E"/>
+            <linearGradient id="metalGrad" x1=".1" y1="0" x2=".95" y2="1">
+              <stop offset="0"   stop-color="#D3D8DC"/>
+              <stop offset=".3"  stop-color="#A6AEB5"/>
+              <stop offset=".7"  stop-color="#6C747B"/>
+              <stop offset="1"   stop-color="#343A40"/>
             </linearGradient>
+
+            <radialGradient id="scleraGrad" cx=".45" cy=".4" r=".7">
+              <stop offset="0"   stop-color="#D8D4BE"/>
+              <stop offset=".62" stop-color="#B3B098"/>
+              <stop offset="1"   stop-color="#6E6C56"/>
+            </radialGradient>
+
+            <radialGradient id="irisGrad" cx=".4" cy=".35" r=".75">
+              <stop offset="0"   stop-color="#8C8E77"/>
+              <stop offset=".55" stop-color="#5E6150"/>
+              <stop offset="1"   stop-color="#31342A"/>
+            </radialGradient>
 
             <radialGradient id="opticGlow">
-              <stop offset="0"   stop-color="#FFE2B4"/>
-              <stop offset=".35" stop-color="#F0A83C"/>
-              <stop offset="1"   stop-color="#7E430B"/>
+              <stop offset="0"   stop-color="#FFF3DC"/>
+              <stop offset=".3"  stop-color="#F0A83C"/>
+              <stop offset=".72" stop-color="#B86A16"/>
+              <stop offset="1"   stop-color="#5E3208"/>
             </radialGradient>
+
+            <linearGradient id="barrelGrad" x1="0" y1="0" x2=".9" y2="1">
+              <stop offset="0"   stop-color="#4C535A"/>
+              <stop offset=".5"  stop-color="#20252A"/>
+              <stop offset="1"   stop-color="#0E1114"/>
+            </linearGradient>
 
             <linearGradient id="scanGrad" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0"   stop-color="#F0A83C" stop-opacity="0"/>
-              <stop offset=".5"  stop-color="#F0A83C" stop-opacity=".55"/>
+              <stop offset=".5"  stop-color="#F0A83C" stop-opacity=".26"/>
               <stop offset="1"   stop-color="#F0A83C" stop-opacity="0"/>
             </linearGradient>
 
-            <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
-              <feGaussianBlur stdDeviation="10" result="b"/>
+            <filter id="b6"  x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="6"/></filter>
+            <filter id="b12" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="12"/></filter>
+            <filter id="b22" x="-70%" y="-70%" width="240%" height="240%"><feGaussianBlur stdDeviation="22"/></filter>
+            <filter id="b34" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="34"/></filter>
+
+            <filter id="softGlow" x="-90%" y="-90%" width="280%" height="280%">
+              <feGaussianBlur stdDeviation="13" result="b"/>
               <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
             </filter>
 
+            <!-- fine pore/mottle texture rather than visible grain -->
             <filter id="skinTexture">
-              <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" result="n"/>
+              <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="4" result="n"/>
               <feColorMatrix in="n" type="saturate" values="0"/>
               <feComposite operator="in" in2="SourceGraphic"/>
             </filter>
 
-            <!-- The tear. Both halves clip against these same points, so the
-                 sides interlock instead of merely abutting. -->
             <clipPath id="clipFlesh">
               <path d="M0,0 L300,0 L314,84 L288,140 L318,198 L294,250 L322,310
                        L296,362 L316,422 L290,476 L312,530 L296,588 L306,700 L0,700 Z"/>
@@ -128,8 +154,6 @@
                        L296,362 L316,422 L290,476 L312,530 L296,588 L306,700 L600,700 Z"/>
             </clipPath>
 
-            <!-- Skull: broad flat cranium, widest at the cheekbones,
-                 jaw kept wide so it doesn't taper to an egg. -->
             <clipPath id="clipHead">
               <path d="M300,92 C232,92 168,112 148,176 C132,224 128,282 134,336
                        C142,396 162,448 190,490 C218,536 256,566 300,576
@@ -138,15 +162,19 @@
             </clipPath>
           </defs>
 
-          <!-- ear / audio port, behind the skull -->
+          <!-- ear / audio port -->
           <g clip-path="url(#clipFlesh)">
+            <path d="M136,332 C108,324 96,354 105,384 C112,410 124,430 142,438 Z" fill="#66714F"/>
             <path d="M136,332 C108,324 96,354 105,384 C112,410 124,430 142,438 Z"
-                  fill="#5F6A48" stroke="#39412B" stroke-width="4"/>
-            <path d="M127,354 C121,368 123,386 132,400" fill="none" stroke="#39412B" stroke-width="4"/>
+                  fill="#2C3320" opacity=".55" filter="url(#b12)"/>
+            <path d="M133,344 C124,360 126,384 136,402" fill="none" stroke="#2E3521" stroke-width="7" stroke-linecap="round" opacity=".8"/>
+            <path d="M129,350 C121,364 123,384 132,398" fill="none" stroke="#9AA57E" stroke-width="2.5" stroke-linecap="round" opacity=".5"/>
           </g>
           <g clip-path="url(#clipMachine)">
-            <rect x="458" y="334" width="36" height="98" rx="12" fill="#5C636A" stroke="#2E3438" stroke-width="4"/>
-            <g fill="#2E3438">
+            <rect x="458" y="334" width="36" height="98" rx="12" fill="#5C636A"/>
+            <rect x="458" y="334" width="36" height="98" rx="12" fill="none" stroke="#22272B" stroke-width="3"/>
+            <rect x="461" y="337" width="30" height="40" rx="9" fill="#B9C0C6" opacity=".22"/>
+            <g fill="#191D21">
               <rect x="467" y="352" width="18" height="7" rx="3.5"/>
               <rect x="467" y="368" width="18" height="7" rx="3.5"/>
               <rect x="467" y="384" width="18" height="7" rx="3.5"/>
@@ -156,148 +184,280 @@
           <!-- neck -->
           <g clip-path="url(#clipFlesh)">
             <path d="M216,540 L204,672 Q300,700 396,672 L384,540 Z" fill="#4A5439"/>
-            <path d="M216,540 Q300,600 384,540" fill="#3B4430" opacity=".55"/>
+            <path d="M216,540 L204,672 Q300,700 396,672 L384,540 Z" fill="#222819" opacity=".75" filter="url(#b22)"/>
+            <path d="M232,548 Q300,606 372,548 L372,540 L232,540 Z" fill="#1E2416" opacity=".6" filter="url(#b12)"/>
           </g>
           <g clip-path="url(#clipMachine)">
             <path d="M216,540 L204,672 Q300,700 396,672 L384,540 Z" fill="#3A4045"/>
-            <g stroke="#252A2E" stroke-width="7" stroke-linecap="round">
-              <path d="M320,570 L316,676"/>
-              <path d="M342,566 L339,672"/>
-              <path d="M362,562 L359,664"/>
+            <path d="M216,540 L204,672 Q300,700 396,672 L384,540 Z" fill="#14181B" opacity=".7" filter="url(#b22)"/>
+            <g stroke="#191D21" stroke-width="9" stroke-linecap="round">
+              <path d="M322,570 L318,676"/><path d="M346,566 L342,672"/><path d="M368,562 L364,662"/>
+            </g>
+            <g stroke="#8A929A" stroke-width="2" stroke-linecap="round" opacity=".55">
+              <path d="M318,570 L314,676"/><path d="M342,566 L338,672"/><path d="M364,562 L360,662"/>
             </g>
           </g>
 
-          <!-- ── Flesh half ─────────────────────────────────── -->
+          <!-- ══ Flesh half ══════════════════════════════════ -->
           <g clip-path="url(#clipFlesh)">
             <g clip-path="url(#clipHead)">
               <rect width="600" height="700" fill="url(#fleshGrad)"/>
-              <rect width="600" height="700" fill="#2A311F" opacity=".45" filter="url(#skinTexture)"/>
 
-              <!-- hollows: temple, cheek, jaw -->
-              <ellipse cx="186" cy="436" rx="58" ry="42" fill="#3A4230" opacity=".5"/>
-              <ellipse cx="168" cy="256" rx="44" ry="36" fill="#3A4230" opacity=".36"/>
-              <ellipse cx="228" cy="192" rx="48" ry="22" fill="#3A4230" opacity=".28"/>
+              <!-- form: the far edge turns away from the light -->
+              <ellipse cx="140" cy="330" rx="76" ry="220" fill="#232A1A" opacity=".55" filter="url(#b34)"/>
+              <ellipse cx="262" cy="588" rx="120" ry="52" fill="#232A1A" opacity=".5" filter="url(#b34)"/>
 
-              <!-- nose: a shadow form, not a line -->
-              <path d="M300,306 L300,442 Q280,456 264,446 Q274,424 286,402 Q294,356 296,306 Z"
-                    fill="#3E4732" opacity=".55"/>
-              <ellipse cx="280" cy="446" rx="11" ry="6.5" fill="#1D2315" opacity=".9"/>
+              <!-- highlights: forehead, cheekbone, chin -->
+              <ellipse cx="226" cy="198" rx="82" ry="52" fill="#C2CCA4" opacity=".3" filter="url(#b34)"/>
+              <ellipse cx="212" cy="392" rx="56" ry="32" fill="#B6C09A" opacity=".26" filter="url(#b22)"/>
+              <ellipse cx="272" cy="548" rx="40" ry="22" fill="#B6C09A" opacity=".18" filter="url(#b22)"/>
 
-              <!-- sunken socket -->
-              <ellipse cx="238" cy="330" rx="55" ry="43" fill="#232A1A" opacity=".95"/>
-              <ellipse cx="238" cy="338" rx="45" ry="28" fill="#1B2113" opacity=".55"/>
-              <!-- clouded eye -->
-              <ellipse cx="241" cy="330" rx="27" ry="18" fill="#C3BFAA"/>
-              <ellipse cx="241" cy="330" rx="27" ry="18" fill="#71724F" opacity=".45"/>
-              <circle cx="238" cy="331" r="9" fill="#5C5B48"/>
-              <circle cx="238" cy="331" r="3.5" fill="#2C2C21"/>
-              <!-- lids -->
-              <path d="M211,318 Q241,303 270,320" fill="none" stroke="#2F3620" stroke-width="8" stroke-linecap="round"/>
-              <path d="M212,343 Q241,362 271,341" fill="none" stroke="#39412B" stroke-width="6" stroke-linecap="round"/>
-              <!-- brow -->
-              <path d="M190,288 Q238,268 284,284" fill="none" stroke="#2C3320" stroke-width="12" stroke-linecap="round"/>
+              <!-- hollows -->
+              <ellipse cx="176" cy="262" rx="46" ry="52" fill="#2B3220" opacity=".45" filter="url(#b22)"/>
+              <ellipse cx="192" cy="450" rx="54" ry="44" fill="#2B3220" opacity=".5"  filter="url(#b22)"/>
+              <ellipse cx="238" cy="306" rx="74" ry="28" fill="#232A1A" opacity=".6"  filter="url(#b12)"/>
 
-              <!-- mouth: torn lip, teeth through the gap -->
-              <path d="M206,492 Q254,478 300,486 L300,522 Q250,526 210,512 Z" fill="#231A17"/>
-              <g fill="#C9C5B0">
-                <rect x="224" y="490" width="18" height="22" rx="3"/>
-                <rect x="247" y="488" width="18" height="24" rx="3"/>
-                <rect x="270" y="487" width="18" height="25" rx="3"/>
+              <!-- decay mottling, several hues so it isn't one flat stain -->
+              <ellipse cx="196" cy="212" rx="42" ry="26" fill="#5E6B45" opacity=".4" filter="url(#b22)"/>
+              <ellipse cx="168" cy="392" rx="38" ry="30" fill="#6B6250" opacity=".33" filter="url(#b22)"/>
+              <ellipse cx="248" cy="452" rx="46" ry="24" fill="#4E5A44" opacity=".36" filter="url(#b22)"/>
+              <ellipse cx="214" cy="530" rx="40" ry="26" fill="#5A5344" opacity=".3"  filter="url(#b22)"/>
+
+              <rect width="600" height="700" fill="#20261A" opacity=".22" filter="url(#skinTexture)"/>
+
+              <!-- decay, laid over the texture so it doesn't get washed out -->
+              <!-- lesion: skin gone, darker tissue beneath, raised pale rim -->
+              <!-- torn irregular edge, not a smooth blob -->
+              <path d="M152,420 L168,410 L182,416 L196,410 L204,422 L200,436
+                       L206,448 L194,458 L180,454 L166,462 L156,452 L150,438 Z"
+                    fill="#2A1F16" opacity=".9"/>
+              <path d="M158,424 L172,417 L190,422 L196,434 L190,448 L174,452 L162,444 Z"
+                    fill="#4A2A20" opacity=".7"/>
+              <ellipse cx="176" cy="436" rx="13" ry="9" fill="#5C332600" stroke="none"/>
+              <ellipse cx="176" cy="436" rx="13" ry="9" fill="#63382A" opacity=".55" filter="url(#b6)"/>
+              <path d="M152,420 L168,410 L182,416 L196,410 L204,422 L200,436
+                       L206,448 L194,458 L180,454 L166,462 L156,452 L150,438 Z"
+                    fill="none" stroke="#A3AD84" stroke-width="3" opacity=".5"/>
+              <g fill="#1A120D" opacity=".7">
+                <circle cx="170" cy="432" r="2.4"/><circle cx="186" cy="440" r="2"/>
+                <circle cx="178" cy="448" r="1.7"/>
               </g>
-              <path d="M204,488 Q252,473 300,482" fill="none" stroke="#39412B" stroke-width="6" stroke-linecap="round"/>
 
-              <!-- sutures along the jaw -->
-              <g stroke="#28301C" stroke-width="4" stroke-linecap="round">
-                <path d="M168,466 Q208,488 238,512"/>
-                <path d="M178,456 L168,478"/><path d="M197,472 L187,494"/>
-                <path d="M216,488 L206,510"/>
+              <!-- veins showing through thin skin -->
+              <g fill="none" stroke="#2C3728" stroke-width="2" opacity=".45" stroke-linecap="round">
+                <path d="M204,248 Q216,276 206,302"/>
+                <path d="M204,248 Q190,266 188,290"/>
+                <path d="M244,206 Q254,234 246,258"/>
+                <path d="M168,340 Q184,356 182,378"/>
               </g>
 
-              <!-- cracks -->
-              <g stroke="#262D1B" stroke-width="3" fill="none" stroke-linecap="round" opacity=".85">
-                <path d="M176,176 L194,212 L180,240"/>
-                <path d="M146,356 L172,372"/>
-                <path d="M224,548 L242,572"/>
+              <!-- bruising under the eye and along the jaw -->
+              <ellipse cx="240" cy="358" rx="44" ry="17" fill="#1A2012" opacity=".5" filter="url(#b12)"/>
+              <ellipse cx="228" cy="502" rx="52" ry="22" fill="#3A2E36" opacity=".28" filter="url(#b22)"/>
+              <ellipse cx="196" cy="228" rx="34" ry="20" fill="#54503A" opacity=".38" filter="url(#b12)"/>
+
+              <!-- nose: form, not outline -->
+              <path d="M300,300 L300,444 Q278,458 262,446 Q272,422 284,398 Q292,350 295,300 Z"
+                    fill="#2A3220" opacity=".66" filter="url(#b12)"/>
+              <ellipse cx="292" cy="432" rx="16" ry="11" fill="#C2CCA4" opacity=".2" filter="url(#b6)"/>
+              <path d="M296,318 Q290,376 286,412" fill="none" stroke="#BAC59B" stroke-width="9"
+                    stroke-linecap="round" opacity=".2" filter="url(#b6)"/>
+              <ellipse cx="279" cy="447" rx="12" ry="7" fill="#151A10" opacity=".92" filter="url(#b6)"/>
+              <path d="M262,440 Q272,452 286,452" fill="none" stroke="#1B2114" stroke-width="5" stroke-linecap="round" opacity=".7"/>
+
+              <!-- eye socket -->
+              <ellipse cx="238" cy="334" rx="60" ry="44" fill="#1C2214" opacity=".8" filter="url(#b12)"/>
+
+              <!-- eyeball -->
+              <ellipse cx="241" cy="331" rx="28" ry="19" fill="url(#scleraGrad)"/>
+              <ellipse cx="241" cy="331" rx="28" ry="19" fill="#5A6047" opacity=".28"/>
+              <!-- iris + pupil -->
+              <circle cx="238" cy="332" r="11.5" fill="url(#irisGrad)"/>
+              <circle cx="238" cy="332" r="11.5" fill="#9AA189" opacity=".3"/>
+              <circle cx="238" cy="332" r="4.6" fill="#171A12"/>
+              <!-- catchlight: the single strongest realism cue -->
+              <ellipse cx="233" cy="326" rx="4" ry="2.8" fill="#FFFFFF" opacity=".85"/>
+              <ellipse cx="246" cy="337" rx="2" ry="1.4" fill="#FFFFFF" opacity=".3"/>
+              <!-- lid shadow cast onto the eyeball -->
+              <path d="M213,331 Q241,306 269,330 Q241,318 213,331 Z" fill="#101409" opacity=".55" filter="url(#b6)"/>
+              <!-- lash line + lid margins -->
+              <path d="M212,329 Q241,308 270,328" fill="none" stroke="#1A2011" stroke-width="5" stroke-linecap="round"/>
+              <path d="M213,342 Q241,360 270,340" fill="none" stroke="#2A3120" stroke-width="4" stroke-linecap="round"/>
+              <path d="M215,345 Q241,361 268,343" fill="none" stroke="#A8B189" stroke-width="1.8" stroke-linecap="round" opacity=".45"/>
+              <!-- crease -->
+              <path d="M208,314 Q240,296 272,313" fill="none" stroke="#242B18" stroke-width="3" stroke-linecap="round" opacity=".65"/>
+
+              <!-- brow: a mass with a lit top edge, not a drawn line -->
+              <path d="M188,296 Q238,272 288,290 Q238,284 188,296 Z" fill="#1F2615" opacity=".8" filter="url(#b6)"/>
+              <path d="M192,286 Q238,266 286,282" fill="none" stroke="#AAB58C" stroke-width="3" stroke-linecap="round" opacity=".28"/>
+
+              <!-- mouth: torn, teeth irregular -->
+              <path d="M204,490 Q252,476 300,484 L300,524 Q248,528 208,514 Z" fill="#18100E"/>
+              <g fill="#C4BFA6">
+                <path d="M222,489 l19,-1 l1,23 l-19,1 z"/>
+                <path d="M245,487 l17,-1 l1,25 l-17,1 z"/>
+                <path d="M266,486 l20,-1 l0,26 l-19,1 z"/>
+              </g>
+              <path d="M204,490 Q252,476 300,484 L300,494 Q250,486 206,499 Z" fill="#0B0705" opacity=".8" filter="url(#b6)"/>
+              <path d="M202,486 Q250,471 300,480" fill="none" stroke="#232A18" stroke-width="7" stroke-linecap="round"/>
+              <path d="M204,481 Q250,467 298,476" fill="none" stroke="#A3AE85" stroke-width="2" stroke-linecap="round" opacity=".3"/>
+              <path d="M212,528 Q252,540 300,532" fill="none" stroke="#1D2314" stroke-width="6" stroke-linecap="round" opacity=".55" filter="url(#b6)"/>
+
+              <!-- sutures: thread plus the puckered skin around it -->
+              <path d="M164,462 Q206,486 238,512" fill="none" stroke="#1B2113" stroke-width="9" stroke-linecap="round" opacity=".5" filter="url(#b6)"/>
+              <path d="M164,462 Q206,486 238,512" fill="none" stroke="#15190D" stroke-width="4" stroke-linecap="round"/>
+              <g stroke="#15190D" stroke-width="4" stroke-linecap="round">
+                <path d="M176,454 L166,478"/><path d="M195,470 L185,494"/><path d="M214,486 L204,510"/>
+              </g>
+              <g stroke="#A9B389" stroke-width="1.6" stroke-linecap="round" opacity=".4">
+                <path d="M178,452 L168,476"/><path d="M197,468 L187,492"/><path d="M216,484 L206,508"/>
+              </g>
+
+              <!-- cracks, tapered -->
+              <g fill="none" stroke="#1D2314" stroke-linecap="round" opacity=".75">
+                <path d="M172,178 L192,214 L178,242" stroke-width="3"/>
+                <path d="M144,358 L172,374" stroke-width="2.4"/>
+                <path d="M226,548 L244,572" stroke-width="2.2"/>
               </g>
             </g>
           </g>
 
-          <!-- ── Machine half ───────────────────────────────── -->
+          <!-- ══ Machine half ════════════════════════════════ -->
           <g clip-path="url(#clipMachine)">
             <g clip-path="url(#clipHead)">
               <rect width="600" height="700" fill="url(#metalGrad)"/>
 
-              <!-- plate seams -->
-              <g fill="none" stroke="#373D43" stroke-width="4" opacity=".9">
-                <path d="M306,166 Q400,154 448,214"/>
-                <path d="M310,404 Q396,396 444,420"/>
-                <path d="M306,466 Q384,462 418,492"/>
-                <path d="M378,128 L378,266"/>
+              <!-- form shading + specular sheen along the lit brow of the plate -->
+              <ellipse cx="470" cy="360" rx="70" ry="220" fill="#171B1F" opacity=".55" filter="url(#b34)"/>
+              <ellipse cx="352" cy="588" rx="110" ry="50" fill="#171B1F" opacity=".5"  filter="url(#b34)"/>
+              <ellipse cx="366" cy="186" rx="76" ry="40" fill="#F2F6F9" opacity=".3"  filter="url(#b22)"/>
+              <ellipse cx="410" cy="418" rx="34" ry="86" fill="#EDF2F6" opacity=".16" filter="url(#b22)"/>
+
+              <!-- panel seams: dark groove with a lit bevel above it -->
+              <g fill="none" stroke-linecap="round">
+                <path d="M306,166 Q400,154 448,214" stroke="#22272C" stroke-width="5"/>
+                <path d="M306,161 Q400,149 448,209" stroke="#C9D1D8" stroke-width="2" opacity=".5"/>
+                <path d="M310,404 Q396,396 444,420" stroke="#22272C" stroke-width="5"/>
+                <path d="M310,399 Q396,391 444,415" stroke="#C9D1D8" stroke-width="2" opacity=".45"/>
+                <path d="M306,466 Q384,462 418,492" stroke="#22272C" stroke-width="5"/>
+                <path d="M306,461 Q384,457 418,487" stroke="#C9D1D8" stroke-width="2" opacity=".4"/>
+                <path d="M378,128 L378,266" stroke="#22272C" stroke-width="4"/>
+                <path d="M374,128 L374,266" stroke="#C9D1D8" stroke-width="1.6" opacity=".4"/>
               </g>
 
-              <!-- nose plate -->
-              <path d="M300,306 L300,442 Q320,456 336,446 Q326,424 314,402 Q306,356 304,306 Z"
-                    fill="#3A4046" opacity=".85"/>
-              <rect x="312" y="440" width="20" height="8" rx="4" fill="#22262A"/>
+              <!-- nose plate, bevelled -->
+              <path d="M300,300 L300,444 Q322,458 338,446 Q328,422 316,398 Q308,350 305,300 Z" fill="#464D54"/>
+              <path d="M300,300 L300,444 Q322,458 338,446 Q328,422 316,398 Q308,350 305,300 Z"
+                    fill="#14181C" opacity=".5" filter="url(#b12)"/>
+              <path d="M306,308 Q314,364 322,404" fill="none" stroke="#D2D9DF" stroke-width="3" stroke-linecap="round" opacity=".45"/>
+              <rect x="312" y="440" width="22" height="9" rx="4.5" fill="#0E1114"/>
 
-              <!-- cheek vent -->
-              <g fill="#2F353A">
-                <rect x="352" y="430" width="76" height="9" rx="4.5"/>
-                <rect x="352" y="448" width="70" height="9" rx="4.5"/>
-                <rect x="352" y="466" width="62" height="9" rx="4.5"/>
+              <!-- cheek vent: recessed slots, lit on the lower lip of each -->
+              <g>
+                <rect x="352" y="430" width="76" height="10" rx="5" fill="#12161A"/>
+                <rect x="352" y="439" width="76" height="2.5" rx="1.25" fill="#AEB6BD" opacity=".45"/>
+                <rect x="352" y="448" width="70" height="10" rx="5" fill="#12161A"/>
+                <rect x="352" y="457" width="70" height="2.5" rx="1.25" fill="#AEB6BD" opacity=".4"/>
+                <rect x="352" y="466" width="62" height="10" rx="5" fill="#12161A"/>
+                <rect x="352" y="475" width="62" height="2.5" rx="1.25" fill="#AEB6BD" opacity=".35"/>
               </g>
 
-              <!-- hex screws -->
-              <g fill="#5A6167" stroke="#2C3236" stroke-width="2">
-                <circle cx="336" cy="180" r="7"/>
-                <circle cx="440" cy="272" r="7"/>
-                <circle cx="332" cy="478" r="7"/>
-                <circle cx="424" cy="398" r="7"/>
+              <!-- screws: recess, shaft, highlight -->
+              <g>
+                <g transform="translate(336,180)">
+                  <circle r="8.5" fill="#191D21"/><circle r="6" fill="#6E767E"/>
+                  <circle r="6" fill="none" stroke="#D5DCE2" stroke-width="1.4" opacity=".5" stroke-dasharray="9 20" transform="rotate(-40)"/>
+                  <rect x="-4" y="-1.2" width="8" height="2.4" rx="1" fill="#20252A"/>
+                </g>
+                <g transform="translate(440,272)">
+                  <circle r="8.5" fill="#191D21"/><circle r="6" fill="#6E767E"/>
+                  <rect x="-4" y="-1.2" width="8" height="2.4" rx="1" fill="#20252A"/>
+                </g>
+                <g transform="translate(332,478)">
+                  <circle r="8.5" fill="#191D21"/><circle r="6" fill="#6E767E"/>
+                  <rect x="-4" y="-1.2" width="8" height="2.4" rx="1" fill="#20252A"/>
+                </g>
+                <g transform="translate(424,398)">
+                  <circle r="8.5" fill="#191D21"/><circle r="6" fill="#6E767E"/>
+                  <rect x="-4" y="-1.2" width="8" height="2.4" rx="1" fill="#20252A"/>
+                </g>
               </g>
 
-              <!-- temple status LEDs -->
+              <!-- temple LEDs, sunk into the plate -->
+              <g>
+                <rect x="425" y="297" width="15" height="15" rx="3" fill="#12161A"/>
+                <rect x="425" y="313" width="15" height="15" rx="3" fill="#12161A"/>
+                <rect x="425" y="329" width="15" height="15" rx="3" fill="#12161A"/>
+              </g>
               <g class="leds" fill="#F0A83C">
                 <rect x="428" y="300" width="9" height="9" rx="2"/>
                 <rect x="428" y="316" width="9" height="9" rx="2"/>
                 <rect x="428" y="332" width="9" height="9" rx="2"/>
               </g>
 
-              <!-- brow plate -->
-              <path d="M318,286 Q368,266 418,282" fill="none" stroke="#373D43" stroke-width="12" stroke-linecap="round"/>
+              <!-- brow plate: mass with a lit leading edge -->
+              <path d="M314,300 Q368,272 422,294 Q368,286 314,300 Z" fill="#20252A" opacity=".85" filter="url(#b6)"/>
+              <path d="M316,288 Q368,266 420,284" fill="none" stroke="#2A3037" stroke-width="11" stroke-linecap="round"/>
+              <path d="M318,282 Q368,261 420,278" fill="none" stroke="#D8DFE5" stroke-width="2.6" stroke-linecap="round" opacity=".5"/>
 
-              <!-- optic -->
-              <circle cx="362" cy="330" r="51" fill="#282D31"/>
-              <circle cx="362" cy="330" r="51" fill="none" stroke="#798188" stroke-width="7"/>
-              <circle cx="362" cy="330" r="39" fill="none" stroke="#434950" stroke-width="3"/>
+              <!-- optic assembly -->
+              <circle cx="362" cy="330" r="56" fill="#171B1F" opacity=".8" filter="url(#b12)"/>
+              <circle cx="362" cy="330" r="52" fill="#5B636B"/>
+              <circle cx="362" cy="330" r="52" fill="none" stroke="#DCE3E9" stroke-width="2.5" opacity=".45"
+                      stroke-dasharray="120 220" transform="rotate(-135 362 330)"/>
+              <circle cx="362" cy="330" r="43" fill="url(#barrelGrad)"/>
+              <circle cx="362" cy="330" r="43" fill="none" stroke="#0D1013" stroke-width="3"/>
+              <circle cx="362" cy="330" r="34" fill="none" stroke="#3C444B" stroke-width="2"/>
               <g class="optic" filter="url(#softGlow)">
-                <circle cx="362" cy="330" r="25" fill="url(#opticGlow)"/>
-                <circle cx="362" cy="330" r="11" fill="#FFEACA"/>
+                <circle cx="362" cy="330" r="26" fill="url(#opticGlow)"/>
+                <circle cx="362" cy="330" r="10" fill="#FFF6E6"/>
               </g>
-              <circle cx="362" cy="330" r="33" fill="none" stroke="#F0A83C" stroke-width="2" opacity=".45"/>
+              <!-- iris ridges + glass reflection -->
+              <g stroke="#2A1A08" stroke-width="1.4" opacity=".45">
+                <path d="M362,308 L362,352"/><path d="M340,330 L384,330"/>
+                <path d="M347,315 L377,345"/><path d="M377,315 L347,345"/>
+              </g>
+              <path d="M336,312 Q352,296 374,300" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity=".38"/>
+              <circle cx="362" cy="330" r="43" fill="none" stroke="#F0A83C" stroke-width="1.5" opacity=".35"/>
 
-              <!-- mouth: same band as the flesh side, so it lines up -->
-              <path d="M300,486 L392,486 Q408,502 400,522 L300,522 Z" fill="#2F353A"/>
-              <g stroke="#727A81" stroke-width="4">
-                <path d="M318,490 L318,518"/><path d="M340,490 L340,518"/>
-                <path d="M362,490 L362,518"/><path d="M382,492 L382,516"/>
+              <!-- mouth grille, aligned to the flesh side -->
+              <path d="M300,486 L392,486 Q408,502 400,522 L300,522 Z" fill="#171B1F"/>
+              <path d="M300,486 L392,486 Q408,502 400,522 L300,522 Z" fill="none" stroke="#0C0F12" stroke-width="3"/>
+              <g stroke="#767E86" stroke-width="5">
+                <path d="M318,491 L318,517"/><path d="M340,491 L340,517"/>
+                <path d="M362,491 L362,517"/><path d="M382,493 L382,515"/>
               </g>
-              <circle cx="404" cy="546" r="10" fill="#5A6167" stroke="#2C3236" stroke-width="2"/>
+              <g stroke="#C3CAD1" stroke-width="1.6" opacity=".5">
+                <path d="M315,491 L315,517"/><path d="M337,491 L337,517"/>
+                <path d="M359,491 L359,517"/><path d="M379,493 L379,515"/>
+              </g>
+              <path d="M300,486 L392,486 Q400,492 396,496 L300,496 Z" fill="#000000" opacity=".45" filter="url(#b6)"/>
+
+              <!-- jaw pivot -->
+              <g transform="translate(404,546)">
+                <circle r="12" fill="#191D21"/><circle r="9" fill="#69717A"/>
+                <circle r="9" fill="none" stroke="#D5DCE2" stroke-width="1.6" opacity=".45" stroke-dasharray="12 30" transform="rotate(-45)"/>
+                <circle r="3.4" fill="#20252A"/>
+              </g>
             </g>
           </g>
 
-          <!-- ── The seam ───────────────────────────────────── -->
+          <!-- ══ The tear ════════════════════════════════════ -->
           <g clip-path="url(#clipHead)">
+            <!-- skin lifts, so the machine reads as sitting under it -->
             <path d="M300,0 L314,84 L288,140 L318,198 L294,250 L322,310
                      L296,362 L316,422 L290,476 L312,530 L296,588 L306,700"
-                  fill="none" stroke="#14100A" stroke-width="10" opacity=".6"/>
+                  fill="none" stroke="#0A0D06" stroke-width="20" opacity=".45" filter="url(#b12)"/>
+            <path d="M300,0 L314,84 L288,140 L318,198 L294,250 L322,310
+                     L296,362 L316,422 L290,476 L312,530 L296,588 L306,700"
+                  fill="none" stroke="#100C07" stroke-width="8" opacity=".65"/>
             <path class="seam" d="M300,0 L314,84 L288,140 L318,198 L294,250 L322,310
                      L296,362 L316,422 L290,476 L312,530 L296,588 L306,700"
-                  fill="none" stroke="#F0A83C" stroke-width="2.5" opacity=".5"/>
+                  fill="none" stroke="#F0A83C" stroke-width="2" opacity=".45"/>
           </g>
 
-          <!-- scan: a soft band, so it reads as a sweep rather than a stray rule -->
           <g clip-path="url(#clipHead)">
-            <rect class="scan" x="0" y="0" width="600" height="46" fill="url(#scanGrad)"/>
+            <rect class="scan" x="0" y="0" width="600" height="34" fill="url(#scanGrad)"/>
           </g>
         </svg>
 
