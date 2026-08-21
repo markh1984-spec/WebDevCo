@@ -116,6 +116,22 @@ second Vercel project from the same repo and set **Root Directory** to
 4. Optionally add a `/<name>` redirect and rewrite pair to `vercel.json`, so
    the site gets a clean URL too.
 
+## Client work: the community site template
+
+`templates/community-site/` is the starting point for real client sites —
+nurseries, village halls, small schools. Same static approach as everything
+else here, built to be reskinned in minutes rather than written from
+scratch each time: every colour is a token at the top of its stylesheet, and
+every piece of editable content (offerings, gallery, hours, quotes) lives in
+one file, `assets/js/content.js`.
+
+It isn't wired into the hub or into `vercel.json` — it's not a demo, it's raw
+material for the next real client. See `templates/community-site/README.md`
+for the full recipe: getting it into its own repo, what to edit, and the
+GitHub Pages vs. Cloudflare Pages trade-off for client work specifically
+(GitHub Pages needs a public repo on the free tier; Cloudflare Pages deploys
+from a private one).
+
 ## Wiring the enquiry form to a backend
 
 The form on the cake site validates in the browser and, by default, just
