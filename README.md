@@ -126,11 +126,14 @@ every piece of editable content (offerings, gallery, hours, quotes) lives in
 one file, `assets/js/content.js`.
 
 It isn't wired into the hub or into `vercel.json` — it's not a demo, it's raw
-material for the next real client. See `templates/community-site/README.md`
-for the full recipe: getting it into its own repo, what to edit, and the
-GitHub Pages vs. Cloudflare Pages trade-off for client work specifically
-(GitHub Pages needs a public repo on the free tier; Cloudflare Pages deploys
-from a private one).
+material for the next real client. Client sites deploy on GitHub Pages, one
+repo per client — decided over Vercel/Cloudflare because these sites hold
+nothing sensitive, so the free tier's one real trade-off (the repo has to be
+public) costs nothing here. The template already includes its own
+`.github/workflows/deploy-pages.yml`. See
+`templates/community-site/README.md` for the full recipe: creating the
+client's repo, what to edit, and setting the custom domain via a `CNAME`
+file.
 
 ## Wiring the enquiry form to a backend
 
