@@ -78,6 +78,7 @@ Once it's on, the site is at `https://markh1984-spec.github.io/WebDevCo/`:
 | `/WebDevCo/` | the WebDevCo hub |
 | `/WebDevCo/elena/` | `sites/elenas-cakes/` |
 | `/WebDevCo/deaddad/` | `sites/deaddad-ai/` |
+| `/WebDevCo/riverside/` | `sites/riverside-hall/` |
 
 Pages has no rewrite rules, so the workflow copies each demo into a real
 directory at its short path. The original `/sites/...` paths are published too,
@@ -97,6 +98,7 @@ isn't the folder structure:
 | `/` | the WebDevCo hub |
 | `/elena` | `sites/elenas-cakes/` |
 | `/deaddad` | `sites/deaddad-ai/` |
+| `/riverside` | `sites/riverside-hall/` |
 
 `/elena` redirects to `/elena/` first. That trailing slash matters: the demo
 sites use relative asset paths, so without it the browser would resolve

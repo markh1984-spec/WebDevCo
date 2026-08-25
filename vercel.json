@@ -2,15 +2,18 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
 
   "redirects": [
-    { "source": "/elena",   "destination": "/elena/",   "permanent": false },
-    { "source": "/deaddad", "destination": "/deaddad/", "permanent": false }
+    { "source": "/elena",     "destination": "/elena/",     "permanent": false },
+    { "source": "/deaddad",   "destination": "/deaddad/",   "permanent": false },
+    { "source": "/riverside", "destination": "/riverside/", "permanent": false }
   ],
 
   "rewrites": [
     { "source": "/elena/", "destination": "/sites/elenas-cakes/index.html" },
     { "source": "/elena/:path*", "destination": "/sites/elenas-cakes/:path*" },
     { "source": "/deaddad/", "destination": "/sites/deaddad-ai/index.html" },
-    { "source": "/deaddad/:path*", "destination": "/sites/deaddad-ai/:path*" }
+    { "source": "/deaddad/:path*", "destination": "/sites/deaddad-ai/:path*" },
+    { "source": "/riverside/", "destination": "/sites/riverside-hall/index.html" },
+    { "source": "/riverside/:path*", "destination": "/sites/riverside-hall/:path*" }
   ],
 
   "headers": [

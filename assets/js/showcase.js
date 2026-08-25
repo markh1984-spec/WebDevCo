@@ -18,6 +18,13 @@ var SITES = [
     tags: ["Static", "Responsive", "Lightbox gallery", "Enquiry form"]
   },
   {
+    name: "Riverside Community Hall",
+    blurb: "A village-hall site from our community template — what's on, hire rates, gallery and a booking enquiry form. Riverside is fictional; your hall wouldn't be.",
+    url: "sites/riverside-hall/index.html",
+    thumb: "assets/img/riverside-hall.jpg",
+    tags: ["Static", "Responsive", "Community template", "Booking enquiries"]
+  },
+  {
     name: "DeadDad.AI",
     blurb: "A single-page launch site for a fictional product. Hand-drawn SVG character art, split down the middle, with a signup ready to wire to a backend.",
     url: "sites/deaddad-ai/index.html",

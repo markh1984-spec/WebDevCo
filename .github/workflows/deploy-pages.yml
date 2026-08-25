@@ -42,9 +42,10 @@ jobs:
           # Pages has no rewrite rules, so give each demo a real directory at
           # the short path. Mirrors what vercel.json does with rewrites, and
           # keeps /sites/... working so the hub's own links still resolve.
-          mkdir -p _site/elena _site/deaddad
-          tar -cf - -C sites/elenas-cakes . | tar -xf - -C _site/elena
-          tar -cf - -C sites/deaddad-ai  . | tar -xf - -C _site/deaddad
+          mkdir -p _site/elena _site/deaddad _site/riverside
+          tar -cf - -C sites/elenas-cakes    . | tar -xf - -C _site/elena
+          tar -cf - -C sites/deaddad-ai      . | tar -xf - -C _site/deaddad
+          tar -cf - -C sites/riverside-hall  . | tar -xf - -C _site/riverside
 
           # Serve the files as-is instead of running them through Jekyll.
           touch _site/.nojekyll
