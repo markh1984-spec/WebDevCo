@@ -30,6 +30,13 @@ var SITES = [
     url: "sites/deaddad-ai/index.html",
     thumb: "assets/img/deaddad-ai.jpg",
     tags: ["Static", "Responsive", "SVG illustration", "Signup form"]
+  },
+  {
+    name: "Rory Joscelyne",
+    blurb: "A portfolio for a filmmaker and photographer. A slow crossfading hero, a justified gallery that never crops a frame, and a full-screen viewer with swipe.",
+    url: "sites/rory/index.html",
+    thumb: "assets/img/rory.jpg",
+    tags: ["Static", "Responsive", "Photography", "Justified gallery"]
   }
 ];
 

@@ -22,6 +22,14 @@ sites/
     assets/js/gallery.js       ← the list of gallery photos lives here
     assets/js/site.js          nav, lightbox, form, scroll reveals
     assets/img/                cake photos
+  rory/                        Rory Joscelyne — photography portfolio
+    index.html
+    assets/css/style.css
+    assets/js/photos.js        ← the hero slides and gallery photos live here
+    assets/js/site.js          header, slideshow, gallery, lightbox
+    assets/img/                web-sized copies of Rory's photos
+tools/
+  prepare_photos.py            camera originals → web-ready, metadata-free
 ```
 
 ## Running it locally
@@ -79,6 +87,7 @@ Once it's on, the site is at `https://markh1984-spec.github.io/WebDevCo/`:
 | `/WebDevCo/elena/` | `sites/elenas-cakes/` |
 | `/WebDevCo/deaddad/` | `sites/deaddad-ai/` |
 | `/WebDevCo/riverside/` | `sites/riverside-hall/` |
+| `/WebDevCo/rory/` | `sites/rory/` |
 
 Pages has no rewrite rules, so the workflow copies each demo into a real
 directory at its short path. The original `/sites/...` paths are published too,
@@ -99,6 +108,7 @@ isn't the folder structure:
 | `/elena` | `sites/elenas-cakes/` |
 | `/deaddad` | `sites/deaddad-ai/` |
 | `/riverside` | `sites/riverside-hall/` |
+| `/rory` | `sites/rory/` |
 
 `/elena` redirects to `/elena/` first. That trailing slash matters: the demo
 sites use relative asset paths, so without it the browser would resolve
@@ -117,6 +127,51 @@ second Vercel project from the same repo and set **Root Directory** to
 3. Add an entry to the `SITES` array at the top of `assets/js/showcase.js`.
 4. Optionally add a `/<name>` redirect and rewrite pair to `vercel.json`, so
    the site gets a clean URL too.
+
+## Rory's photography site
+
+`sites/rory/` is a portfolio for Rory Joscelyne. Unlike the other demos it's
+for a real person, built from a real shoot: the photos come from the
+"1 Magazine Mews – photos & video from Rory" folder in Google Drive, and the
+best of them were picked by hand for the hero and the gallery.
+
+Everything you'd want to change about the photos lives in
+`sites/rory/assets/js/photos.js`:
+
+- `HERO_PHOTOS` — the full-screen slideshow at the top. `focus` sets which
+  part of a landscape photo stays in view on a tall phone screen.
+- `PROJECTS` — one entry per shoot, each with its own title, details line
+  and photo list. A new shoot is a new entry; the page builds the section.
+  `feature: true` gives a photo a full-width row of its own.
+
+The gallery is a justified layout: rows are filled edge to edge and every
+photo keeps its own shape, so nothing is cropped. That's why each photo
+lists its `w` and `h` — `prepare_photos.py` prints them for you.
+
+### Adding new photos
+
+1. Download the originals from Drive.
+2. Run them through the prep script, which makes a 2000px copy for the
+   lightbox and a 960px one for the grid, bakes in rotation and strips every
+   bit of metadata (capture times, camera serials and, from phones, GPS):
+
+   ```bash
+   pip install pillow
+   python3 tools/prepare_photos.py --out sites/rory/assets/img \
+       ~/Downloads/"Kitchen 003.jpg" ~/Downloads/"Garden 002.jpg"
+   ```
+
+3. Paste the lines it prints into `photos.js` and write the `alt` text.
+
+### Before it goes live
+
+- The contact email is a placeholder (`hello@roryjoscelyne.example`), and
+  the page carries `noindex` until the real one is in.
+- The About copy is built from the Cyberpunk Studios podcast pitch — check
+  it with Rory.
+- The shoot is published as "The Mews House" with no street address.
+  Interiors plus an address tells a stranger exactly what's inside whose
+  front door, so keep it that way unless the owner says otherwise.
 
 ## Client work: the community site template
 

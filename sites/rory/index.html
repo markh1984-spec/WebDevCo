@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rory Joscelyne — Photography</title>
+<meta name="description" content="Photography by Rory Joscelyne, filmmaker and photographer in South Essex. Interiors, architecture and the light that moves through a space.">
+
+<!-- First draft. The contact details are placeholders, so keep it out of
+     search results until the real ones are in and it has its own domain. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F3F0EA">
+
+<meta property="og:title" content="Rory Joscelyne — Photography">
+<meta property="og:description" content="Interiors, architecture and the light that moves through a space.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/hero-01.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='34' fill='%23D23C2A'/></svg>">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">
+      <span class="rec-dot" aria-hidden="true"></span>
+      <span class="brand-text">Rory Joscelyne</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ── Hero ─────────────────────────────────────────────
+       Slides come from HERO_PHOTOS in assets/js/photos.js.
+       The first one is also written here so the page has a
+       picture before any script runs. -->
+  <section class="hero" aria-label="Featured photographs">
+    <div class="hero-slides" id="hero-slides">
+      <img class="hero-slide is-active" src="assets/img/hero-01.jpg" alt="" fetchpriority="high">
+    </div>
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="wrap hero-copy">
+      <p class="eyebrow">Photography &middot; Film</p>
+      <h1>Rooms, light<br>and <em>the space between.</em></h1>
+      <a class="hero-link" href="#work">See the work</a>
+    </div>
+    <p class="hero-counter" id="hero-counter" aria-hidden="true"></p>
+  </section>
+
+  <!-- ── Work ─────────────────────────────────────────────
+       Filled from PROJECTS in assets/js/photos.js — add new
+       shoots there, not here. -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow">Selected work</p>
+        <h2>Stills with a <em>filmmaker's</em> eye.</h2>
+        <p class="section-lede">
+          Every frame here is lit and composed the way a scene would be:
+          where the light falls, what it leads you to, and what's left
+          for you to notice.
+        </p>
+      </header>
+      <div id="projects"></div>
+    </div>
+  </section>
+
+  <!-- ── About ────────────────────────────────────────────── -->
+  <section class="section section-dark" id="about">
+    <div class="wrap about-inner">
+      <figure class="about-photo">
+        <img src="assets/img/about.jpg" alt="" loading="lazy" id="about-photo">
+      </figure>
+      <div class="about-copy">
+        <p class="eyebrow">About</p>
+        <h2>Rory Joscelyne</h2>
+        <p class="lede">
+          Rory is a filmmaker and photographer at Cyberpunk Studios, a small
+          independent film studio in South Essex.
+        </p>
+        <p>
+          He wrote <em>Turning Tide</em>, which won the Raindance competition
+          in 2021, and wrote and directed <em>Human Cargo</em>, nominated for
+          awards in 2019. The stills come from the same habits as the films:
+          wait for the light, find the frame, and let the space do the talking.
+        </p>
+        <ul class="facts">
+          <li><span class="k">Based in</span><span class="v">South Essex</span></li>
+          <li><span class="k">Shoots</span><span class="v">Interiors, architecture, film</span></li>
+          <li><span class="k">Also</span><span class="v">Host of the VGMP podcast</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ──────────────────────────────────────────── -->
+  <section class="section" id="contact">
+    <div class="wrap contact-inner">
+      <div>
+        <p class="eyebrow">Commissions</p>
+        <h2>Have a space worth <em>photographing?</em></h2>
+        <p class="section-lede">
+          Homes, studios, venues and places to stay. Tell Rory a little about
+          the space and when it's at its best.
+        </p>
+      </div>
+      <!-- Placeholder address — swap in Rory's real one before going live. -->
+      <a class="btn" href="mailto:hello@roryjoscelyne.example">hello@roryjoscelyne.example</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>&copy; <span id="year">2026</span> Rory Joscelyne. All photographs are his and not for reuse without permission.</p>
+    <p>Site by <a href="https://markh1984-spec.github.io/WebDevCo/">WebDevCo</a></p>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+  <figure class="lightbox-figure">
+    <img id="lightbox-img" src="" alt="">
+    <figcaption class="lightbox-caption">
+      <span id="lightbox-title"></span>
+      <span class="lightbox-count" id="lightbox-count"></span>
+    </figcaption>
+  </figure>
+  <button class="lightbox-btn lightbox-close" aria-label="Close">&times;</button>
+  <button class="lightbox-btn lightbox-prev" aria-label="Previous photo">&#8249;</button>
+  <button class="lightbox-btn lightbox-next" aria-label="Next photo">&#8250;</button>
+</div>
+
+<script src="assets/js/photos.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

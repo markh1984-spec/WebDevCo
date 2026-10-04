@@ -4,7 +4,8 @@
   "redirects": [
     { "source": "/elena",     "destination": "/elena/",     "permanent": false },
     { "source": "/deaddad",   "destination": "/deaddad/",   "permanent": false },
-    { "source": "/riverside", "destination": "/riverside/", "permanent": false }
+    { "source": "/riverside", "destination": "/riverside/", "permanent": false },
+    { "source": "/rory",      "destination": "/rory/",      "permanent": false }
   ],
 
   "rewrites": [
@@ -13,7 +14,9 @@
     { "source": "/deaddad/", "destination": "/sites/deaddad-ai/index.html" },
     { "source": "/deaddad/:path*", "destination": "/sites/deaddad-ai/:path*" },
     { "source": "/riverside/", "destination": "/sites/riverside-hall/index.html" },
-    { "source": "/riverside/:path*", "destination": "/sites/riverside-hall/:path*" }
+    { "source": "/riverside/:path*", "destination": "/sites/riverside-hall/:path*" },
+    { "source": "/rory/", "destination": "/sites/rory/index.html" },
+    { "source": "/rory/:path*", "destination": "/sites/rory/:path*" }
   ],
 
   "headers": [
