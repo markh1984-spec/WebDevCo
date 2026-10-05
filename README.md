@@ -130,30 +130,45 @@ second Vercel project from the same repo and set **Root Directory** to
 
 ## Rory's photography site
 
-`sites/rory/` is a portfolio for Rory Joscelyne. Unlike the other demos it's
-for a real person, built from a real shoot: the photos come from the
-"1 Magazine Mews – photos & video from Rory" folder in Google Drive, and the
-best of them were picked by hand for the hero and the gallery.
+`sites/rory/` is a portfolio for Rory Joscelyne of Cyberpunk Studios. Unlike
+the other demos it's for a real person, built from his real photos in Google
+Drive, picked by hand.
+
+| Project | Source in Drive | Status |
+|---|---|---|
+| Ministry of Sound | `DJ site/Ministry of Sound, c.2015` (31 photos) | live, 13 picked |
+| The Mews House | `1 Magazine Mews – photos & video from Rory` (80 photos) | waiting on smaller copies |
+
+The Ministry of Sound files are WhatsApp copies, 1600px on the long edge.
+That's fine for the gallery and passable for the hero, but Rory's originals
+would be sharper if he has them.
+
+The Mews House shoot can't be pulled yet: the originals are 8–19 MB each and
+the Google Drive connector drops anything much over 2 MB. Exports at about
+2400px (JPEG quality ~80, 1–2 MB) dropped into a subfolder will come through.
 
 Everything you'd want to change about the photos lives in
 `sites/rory/assets/js/photos.js`:
 
 - `HERO_PHOTOS` — the full-screen slideshow at the top. `focus` sets which
   part of a landscape photo stays in view on a tall phone screen.
-- `PROJECTS` — one entry per shoot, each with its own title, details line
+- `PROJECTS` — one entry per shoot, each with a title, details line, blurb
   and photo list. A new shoot is a new entry; the page builds the section.
+  `tone: "dark"` puts the project on black, which suits night work.
   `feature: true` gives a photo a full-width row of its own.
 
 The gallery is a justified layout: rows are filled edge to edge and every
 photo keeps its own shape, so nothing is cropped. That's why each photo
-lists its `w` and `h` — `prepare_photos.py` prints them for you.
+lists its `w` and `h` — `prepare_photos.py` prints them for you. End each
+project on a `feature` photo so the last row is never left half-full.
 
 ### Adding new photos
 
 1. Download the originals from Drive.
-2. Run them through the prep script, which makes a 2000px copy for the
-   lightbox and a 960px one for the grid, bakes in rotation and strips every
-   bit of metadata (capture times, camera serials and, from phones, GPS):
+2. Run them through the prep script, which makes a full-size copy (up to
+   2000px) for the viewer and a 960px one for the grid, bakes in rotation
+   and strips every bit of metadata (capture times, camera serials and,
+   from phones, GPS):
 
    ```bash
    pip install pillow
@@ -161,17 +176,22 @@ lists its `w` and `h` — `prepare_photos.py` prints them for you.
        ~/Downloads/"Kitchen 003.jpg" ~/Downloads/"Garden 002.jpg"
    ```
 
-3. Paste the lines it prints into `photos.js` and write the `alt` text.
+3. Paste the lines it prints into `photos.js` and write the caption and
+   `alt` text.
 
 ### Before it goes live
 
 - The contact email is a placeholder (`hello@roryjoscelyne.example`), and
   the page carries `noindex` until the real one is in.
+- The About photo is the club's lighting rig, standing in for a portrait of
+  Rory. Swap `assets/img/mos-about.jpg` for one when there is one.
 - The About copy is built from the Cyberpunk Studios podcast pitch — check
   it with Rory.
-- The shoot is published as "The Mews House" with no street address.
-  Interiors plus an address tells a stranger exactly what's inside whose
-  front door, so keep it that way unless the owner says otherwise.
+- The Mews House is a family home. Publish it under that name, with no
+  street address: interiors plus an address tell a stranger exactly what's
+  behind whose front door.
+- The Ministry of Sound gallery shows guests only small in frame or from
+  behind, at an awards night. Keep it that way when adding more.
 
 ## Client work: the community site template
 

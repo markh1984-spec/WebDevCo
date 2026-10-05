@@ -82,8 +82,12 @@
   var projects = window.PROJECTS || [];
 
   projects.forEach(function (project) {
+    // Each project is a full-width band; `tone: "dark"` suits night work.
     var section = document.createElement("article");
-    section.className = "project";
+    section.className = "project" + (project.tone === "dark" ? " project--dark" : "");
+    var inner = document.createElement("div");
+    inner.className = "wrap";
+    section.appendChild(inner);
 
     var head = document.createElement("header");
     head.className = "project-head";
@@ -91,34 +95,35 @@
     h3.textContent = project.title;
     head.appendChild(h3);
 
-    if (project.meta && project.meta.length) {
-      var meta = document.createElement("ul");
-      meta.className = "project-meta";
-      project.meta.forEach(function (m) {
-        var li = document.createElement("li");
-        li.textContent = m;
-        meta.appendChild(li);
-      });
-      head.appendChild(meta);
-    }
-    section.appendChild(head);
+    var meta = document.createElement("ul");
+    meta.className = "project-meta";
+    (project.meta || []).forEach(function (m) {
+      var li = document.createElement("li");
+      li.textContent = m;
+      meta.appendChild(li);
+    });
+    var count = document.createElement("li");
+    meta.appendChild(count);
+    head.appendChild(meta);
+    inner.appendChild(head);
 
     if (project.blurb) {
       var blurb = document.createElement("p");
       blurb.className = "project-blurb";
       blurb.textContent = project.blurb;
-      section.appendChild(blurb);
+      inner.appendChild(blurb);
     }
 
     var grid = document.createElement("div");
     grid.className = "gallery";
-    section.appendChild(grid);
+    inner.appendChild(grid);
 
     var items = [];
 
     // Frame numbers, redone whenever a missing photo is dropped.
     var renumber = function () {
       items.forEach(function (it, i) { it.num.textContent = pad(i + 1); });
+      count.textContent = items.length + (items.length === 1 ? " frame" : " frames");
     };
 
     (project.photos || []).forEach(function (photo) {
@@ -133,7 +138,11 @@
 
       var img = document.createElement("img");
       img.src = IMG + small(photo.src);
-      img.srcset = IMG + small(photo.src) + " 960w, " + IMG + photo.src + " 2000w";
+      if (photo.w && photo.h) {
+        // The small copy is 960px on its long edge; the full one is w × h.
+        var smW = Math.round(photo.w * Math.min(1, 960 / Math.max(photo.w, photo.h)));
+        img.srcset = IMG + small(photo.src) + " " + smW + "w, " + IMG + photo.src + " " + photo.w + "w";
+      }
       img.sizes = photo.feature ? "100vw" : "(max-width: 720px) 100vw, 50vw";
       img.alt = photo.alt || "";
       img.loading = "lazy";

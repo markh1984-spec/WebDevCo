@@ -21,7 +21,7 @@
 
   --wrap: 1320px;
   --gap: 10px;        /* space between photos */
-  --row-h: 340px;     /* target height of a gallery row */
+  --row-h: clamp(200px, 25vw, 340px);  /* target height of a gallery row */
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -179,7 +179,7 @@ a { color: inherit; }
 
 /* ── Sections ──────────────────────────────────────────── */
 .section { padding: clamp(5rem, 10vw, 8.5rem) 0; }
-.section-dark { background: var(--night); color: var(--paper); }
+.section-dark { background: var(--night); color: var(--paper); border-top: 1px solid rgba(243, 240, 234, .1); }
 .section-dark .eyebrow { color: rgba(243, 240, 234, .55); }
 
 .section-head {
@@ -199,7 +199,15 @@ a { color: inherit; }
    Each photo grows in proportion to its aspect ratio, so
    every row comes out the same height and flush at both
    edges — no cropping. --ar is set per photo by site.js.  */
-.project + .project { margin-top: clamp(5rem, 10vw, 8rem); }
+#work { padding-bottom: 0; }
+
+/* Each project is its own full-width band. */
+.project { padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(4.5rem, 9vw, 7.5rem); }
+.project--dark { background: var(--night); color: var(--paper); }
+.project--dark .project-head { border-bottom-color: rgba(243, 240, 234, .16); }
+.project--dark .project-meta,
+.project--dark .project-blurb { color: rgba(243, 240, 234, .62); }
+.project--dark .photo { background: #1C1C1A; }
 
 .project-head {
   display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
@@ -290,7 +298,7 @@ a { color: inherit; }
   display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
   gap: 2rem 4rem;
 }
-.contact-inner h2 { max-width: 14ch; }
+.contact-inner h2 { max-width: 18ch; }
 
 .btn {
   display: inline-flex; align-items: center; gap: .75rem;
@@ -322,7 +330,7 @@ a { color: inherit; }
 /* ── Lightbox ──────────────────────────────────────────── */
 .lightbox {
   position: fixed; inset: 0; z-index: 300;
-  background: rgba(12, 12, 11, .97);
+  background: #0C0C0B;
   display: flex; align-items: center; justify-content: center;
   padding: 4.5rem clamp(1rem, 7vw, 6rem) 1.5rem;
   color: var(--paper);
