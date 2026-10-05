@@ -117,7 +117,8 @@ instead. Keep that redirect when adding new paths.
 
 To give a demo its own subdomain instead (`elenas-cakes.vercel.app`), create a
 second Vercel project from the same repo and set **Root Directory** to
-`sites/elenas-cakes`. No rewrites needed in that setup.
+`sites/elenas-cakes`. No rewrites needed in that setup. Rory's site is set up
+this way: project name `rory-joscelyne`, Root Directory `sites/rory`.
 
 ## Adding another example site
 
@@ -134,18 +135,16 @@ second Vercel project from the same repo and set **Root Directory** to
 the other demos it's for a real person, built from his real photos in Google
 Drive, picked by hand.
 
-| Project | Source in Drive | Status |
+| Project | Source in Drive | Picked |
 |---|---|---|
-| Ministry of Sound | `DJ site/Ministry of Sound, c.2015` (31 photos) | live, 13 picked |
-| The Mews House | `1 Magazine Mews – photos & video from Rory` (80 photos) | waiting on smaller copies |
+| Ministry of Sound | `DJ site/Ministry of Sound, c.2015` (31 photos) | 13 |
+| The Mews House | `1 Magazine Mews – photos & video from Rory/Web` (80 photos) | 18 |
 
-The Ministry of Sound files are WhatsApp copies, 1600px on the long edge.
-That's fine for the gallery and passable for the hero, but Rory's originals
-would be sharper if he has them.
-
-The Mews House shoot can't be pulled yet: the originals are 8–19 MB each and
-the Google Drive connector drops anything much over 2 MB. Exports at about
-2400px (JPEG quality ~80, 1–2 MB) dropped into a subfolder will come through.
+Both folders hold web-sized copies: 1600px for Ministry of Sound (WhatsApp
+copies, so a touch soft at full screen) and 2000px for the house. Use the
+`Web` folder rather than the room folders beside it: those hold Rory's
+8–19 MB camera originals, and the Google Drive connector can't download
+anything much over 2 MB.
 
 Everything you'd want to change about the photos lives in
 `sites/rory/assets/js/photos.js`:
@@ -189,7 +188,12 @@ project on a `feature` photo so the last row is never left half-full.
   it with Rory.
 - The Mews House is a family home. Publish it under that name, with no
   street address: interiors plus an address tell a stranger exactly what's
-  behind whose front door.
+  behind whose front door. For the same reason:
+  - in `house-01.jpg` the house-name sign on the garden wall and the number
+    plaque by the door are blurred;
+  - nothing showing the CCTV monitor (its screen shows the camera views),
+    the street with neighbours' houses and parked cars, or family members
+    is used.
 - The Ministry of Sound gallery shows guests only small in frame or from
   behind, at an awards night. Keep it that way when adding more.
 
