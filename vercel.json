@@ -7,7 +7,9 @@
     { "source": "/riverside", "destination": "/riverside/", "permanent": false },
     { "source": "/rory",      "destination": "/rory/",      "permanent": false },
     { "source": "/",     "has": [{ "type": "host", "value": "mauledbythetigers.co.uk" }], "destination": "/home/", "permanent": false },
-    { "source": "/home", "has": [{ "type": "host", "value": "mauledbythetigers.co.uk" }], "destination": "/home/", "permanent": false }
+    { "source": "/home", "has": [{ "type": "host", "value": "mauledbythetigers.co.uk" }], "destination": "/home/", "permanent": false },
+    { "source": "/",     "has": [{ "type": "host", "value": "www.mauledbythetigers.co.uk" }], "destination": "/home/", "permanent": false },
+    { "source": "/home", "has": [{ "type": "host", "value": "www.mauledbythetigers.co.uk" }], "destination": "/home/", "permanent": false }
   ],
 
   "rewrites": [
@@ -19,7 +21,8 @@
     { "source": "/riverside/:path*", "destination": "/sites/riverside-hall/:path*" },
     { "source": "/rory/", "destination": "/sites/rory/index.html" },
     { "source": "/rory/:path*", "destination": "/sites/rory/:path*" },
-    { "source": "/home/", "has": [{ "type": "host", "value": "mauledbythetigers.co.uk" }], "destination": "/sites/mauled-by-the-tigers/index.html" }
+    { "source": "/home/", "has": [{ "type": "host", "value": "mauledbythetigers.co.uk" }], "destination": "/sites/mauled-by-the-tigers/index.html" },
+    { "source": "/home/", "has": [{ "type": "host", "value": "www.mauledbythetigers.co.uk" }], "destination": "/sites/mauled-by-the-tigers/index.html" }
   ],
 
   "headers": [
