@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Two grown adults in tiger suits play console football, live, twice a week. Watch the stream, buy the merch, join the Hall of the Mauled.">
+<meta name="theme-color" content="#ef6b1b">
+<meta property="og:title" content="Mauled by the Tigers">
+<meta property="og:description" content="Two grown adults in tiger suits play console football, live, twice a week.">
+<meta property="og:url" content="https://mauledbythetigers.co.uk/">
+<meta property="og:type" content="website">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23ef6b1b'/%3E%3Cg fill='none' stroke='%2315100c' stroke-width='3.2' stroke-linecap='round'%3E%3Cpath d='M9 5 Q12 16 10 27'/%3E%3Cpath d='M16 4 Q19 16 17 28'/%3E%3Cpath d='M23 5 Q26 16 24 27'/%3E%3C/g%3E%3C/svg%3E">
+<title>Mauled by the Tigers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: orange hero with the word MAULED clawed open, then ink "stadium at night" sections, a bone-paper shop band, tiger-stripe dividers between them. Single committed look. */
+:root {
+  color-scheme: dark;
+  --tiger: #ef6b1b;
+  --tiger-deep: #cf5513;
+  --ink: #15100c;
+  --ink-2: #1f1712;
+  --ink-3: #2c211a;
+  --bone: #f4e9d6;
+  --bone-dim: #b8a891;
+  --glow: #ffb43a;
+  --live: #ff3b2f;
+  --line: rgba(244, 233, 214, 0.14);
+  --line-ink: rgba(21, 16, 12, 0.16);
+  --font-display: "Big Shoulders Display", "Big Shoulders", "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
+  --font-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--ink);
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--glow); outline-offset: 3px; }
+
+.wrap { max-width: 1160px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 40px); }
+
+h1, h2, h3 { font-family: var(--font-display); text-transform: uppercase; margin: 0; text-wrap: balance; }
+h2 { font-weight: 900; font-size: clamp(2.6rem, 6.4vw, 4.6rem); line-height: 0.88; letter-spacing: 0.005em; }
+p { margin: 0; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-weight: 800; font-size: 0.95rem;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--tiger);
+}
+.sample {
+  font-family: var(--font-body); font-weight: 600; font-size: 0.68rem; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 2px 8px; border: 1px solid currentColor; border-radius: 99px;
+  opacity: 0.6; vertical-align: middle;
+}
+.section-head { display: grid; gap: 14px; max-width: 640px; margin-bottom: clamp(28px, 4vw, 44px); }
+.section-head p { color: var(--bone-dim); font-size: 1.08rem; max-width: 56ch; }
+.section { padding-block: clamp(56px, 8vw, 104px); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; letter-spacing: 0.06em;
+  text-transform: uppercase; text-decoration: none; cursor: pointer;
+  padding: 12px 22px; border-radius: 3px; border: 2px solid var(--ink);
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-ink { background: var(--ink); color: var(--tiger); }
+.btn-ghost { background: transparent; color: var(--ink); }
+.btn-ghost:hover { background: var(--ink); color: var(--tiger); }
+
+/* ---------- Hero ---------- */
+.hero { background: var(--tiger); color: var(--ink); position: relative; overflow: hidden; isolation: isolate; }
+.hero-stripes { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 20px; flex-wrap: wrap; }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--font-display); font-weight: 900; font-size: 1.2rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.brand svg { width: 30px; height: 30px; flex: none; }
+.nav-links { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
+.nav-links a { font-family: var(--font-display); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; font-size: 1rem; }
+.nav-links a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.status {
+  display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: var(--bone);
+  font-family: var(--font-display); font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  font-size: 0.9rem; padding: 6px 12px; border-radius: 99px; white-space: nowrap; font-variant-numeric: tabular-nums;
+}
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--bone-dim); flex: none; }
+.status.is-live .dot { background: var(--live); box-shadow: 0 0 0 0 var(--live); animation: pulse 1.6s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 59, 47, 0.7); } 100% { box-shadow: 0 0 0 10px rgba(255, 59, 47, 0); } }
+
+.hero-inner { padding-block: clamp(28px, 6vw, 64px) clamp(48px, 7vw, 88px); display: grid; gap: clamp(20px, 3vw, 30px); }
+.wordmark { font-weight: 900; line-height: 0.8; font-size: clamp(5rem, 21vw, 16rem); letter-spacing: -0.005em; }
+.wordmark .maul { position: relative; display: inline-block; }
+.wordmark .rest { display: block; font-size: 0.35em; letter-spacing: 0.035em; line-height: 1; margin-top: 0.12em; }
+.claws { position: absolute; inset: -8% -4% -4% -4%; width: 108%; height: 112%; overflow: visible; pointer-events: none; }
+.claws path { fill: none; stroke: var(--tiger); stroke-width: 0.07em; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.claws.animate path { animation: claw 0.42s cubic-bezier(.6,0,.3,1) both; }
+.claws.animate path:nth-child(2) { animation-delay: 0.09s; }
+.claws.animate path:nth-child(3) { animation-delay: 0.18s; }
+@keyframes claw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+
+.lede { font-size: clamp(1.15rem, 2.3vw, 1.45rem); font-weight: 500; max-width: 32ch; line-height: 1.35; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.tally { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; font-size: 1rem; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; }
+.tally b { font-weight: 900; font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+
+/* ---------- Stripe divider ---------- */
+.band { height: 34px; background: var(--tiger); }
+.band svg { display: block; width: 100%; height: 100%; }
+
+/* ---------- Live ---------- */
+.live-grid { display: grid; grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr); gap: clamp(16px, 2.4vw, 28px); align-items: start; }
+.player {
+  position: relative; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 4px; overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 110%, #2b2a14 0%, #14120c 45%, #0b0806 100%);
+  border: 1px solid var(--line);
+}
+.player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.player-stripes { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.5; }
+.eyes { position: absolute; display: flex; gap: 0.9em; font-size: clamp(10px, 1.6vw, 18px); }
+.eyes.a { left: 22%; top: 26%; }
+.eyes.b { left: 60%; top: 34%; font-size: clamp(8px, 1.25vw, 14px); }
+.eye {
+  position: relative; width: 2.6em; height: 1.5em; background: var(--glow);
+  border-radius: 100% 0; transform: rotate(-8deg);
+  box-shadow: 0 0 1.4em rgba(255, 180, 58, 0.55), 0 0 0.4em rgba(255, 180, 58, 0.9);
+  animation: blink 6s infinite; overflow: hidden;
+}
+.eye + .eye { border-radius: 0 100%; transform: rotate(8deg); }
+.eyes.b .eye { animation-delay: 2.3s; }
+.pupil { position: absolute; left: 50%; top: 50%; width: 0.38em; height: 1.3em; margin: -0.65em 0 0 -0.19em; background: var(--ink); border-radius: 50%; transition: transform 0.12s linear; }
+@keyframes blink { 0%, 95%, 100% { scale: 1 1; } 97% { scale: 1 0.08; } }
+.asleep { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(12px, 2.4vw, 26px); display: grid; gap: 2px; background: linear-gradient(to top, rgba(11, 8, 6, 0.9), transparent); }
+.asleep .label { font-family: var(--font-display); font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; font-size: clamp(0.75rem, 1.4vw, 0.95rem); color: var(--bone-dim); }
+.asleep .count { font-family: var(--font-display); font-weight: 900; font-size: clamp(1.9rem, 5.4vw, 3.6rem); line-height: 1; font-variant-numeric: tabular-nums; color: var(--bone); }
+
+.fixtures { background: var(--ink-2); border: 1px solid var(--line); border-radius: 4px; padding: 20px; display: grid; gap: 4px; min-width: 0; }
+.fixtures h3 { font-size: 1.3rem; font-weight: 800; letter-spacing: 0.06em; display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 8px; }
+.fixture { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 14px; padding-block: 12px; border-top: 1px solid var(--line); }
+.fixture .when { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; line-height: 1.05; color: var(--tiger); }
+.fixture .when span { display: block; font-size: 1.7rem; color: var(--bone); font-variant-numeric: tabular-nums; }
+.fixture .what { font-weight: 600; }
+.fixture .note { color: var(--bone-dim); font-size: 0.92rem; }
+
+/* ---------- Shop ---------- */
+.shop { background: var(--bone); color: var(--ink); }
+.shop .section-head p { color: #5d5043; }
+.shop .eyebrow { color: var(--tiger-deep); }
+.products { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(14px, 2vw, 24px); }
+.product { display: grid; gap: 10px; align-content: start; }
+.art { position: relative; aspect-ratio: 1; max-width: 100%; border-radius: 3px; display: grid; place-items: center; overflow: hidden; }
+.art svg { width: 82%; height: 82%; }
+.art.on-tiger { background: var(--tiger); }
+.art.on-ink { background: var(--ink); }
+.art.on-sand { background: #e4d4ba; }
+.badge { position: absolute; top: 10px; left: 10px; background: var(--live); color: #fff; font-family: var(--font-display); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.82rem; padding: 4px 9px; border-radius: 2px; font-variant-numeric: tabular-nums; }
+.product h3 { font-size: 1.45rem; font-weight: 800; line-height: 1; letter-spacing: 0.02em; }
+.product .desc { color: #5d5043; font-size: 0.95rem; }
+.buy-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 4px; }
+.price { font-family: var(--font-display); font-weight: 900; font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+.btn-buy { padding: 8px 16px; font-size: 1rem; background: var(--ink); color: var(--bone); }
+.btn-buy:hover { background: var(--tiger); color: var(--ink); }
+
+/* ---------- Rivalry ---------- */
+.board { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: end; gap: clamp(12px, 3vw, 40px); padding-bottom: clamp(20px, 3vw, 32px); border-bottom: 1px solid var(--line); }
+.side { display: grid; gap: 4px; min-width: 0; }
+.side.right { text-align: right; }
+.side .name { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(1.1rem, 2.6vw, 1.8rem); }
+.side .wins { font-family: var(--font-display); font-weight: 900; font-size: clamp(5rem, 17vw, 11rem); line-height: 0.8; font-variant-numeric: tabular-nums; }
+.side.lead .wins { color: var(--tiger); }
+.side .sub { color: var(--bone-dim); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+.mid { text-align: center; padding-bottom: 0.6em; }
+.mid .draws { font-family: var(--font-display); font-weight: 900; font-size: clamp(2rem, 4vw, 3rem); line-height: 1; font-variant-numeric: tabular-nums; }
+.mid .sub { color: var(--bone-dim); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; }
+
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 2vw, 24px); padding-block: clamp(20px, 3vw, 32px); }
+.stat { display: grid; gap: 4px; min-width: 0; }
+.stat .k { color: var(--bone-dim); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; }
+.stat .v { font-family: var(--font-display); font-weight: 900; font-size: clamp(1.6rem, 3.4vw, 2.4rem); line-height: 1; font-variant-numeric: tabular-nums; }
+.stat .v small { font-size: 0.5em; font-weight: 800; letter-spacing: 0.06em; color: var(--bone-dim); margin-left: 4px; }
+.form { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 3px; font-family: var(--font-display); font-weight: 900; font-size: 1rem; }
+.chip.w { background: var(--tiger); color: var(--ink); }
+.chip.d { background: var(--ink-3); color: var(--bone); }
+.chip.l { background: transparent; color: var(--bone-dim); border: 1px solid var(--line); }
+
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 480px; }
+th { text-align: left; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--bone-dim); font-weight: 600; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+td { padding: 14px 12px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+td.score { font-family: var(--font-display); font-weight: 900; font-size: 1.5rem; white-space: nowrap; }
+td.score .vs { color: var(--bone-dim); font-weight: 700; padding-inline: 4px; }
+.tag { font-family: var(--font-display); font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.85rem; background: var(--tiger); color: var(--ink); padding: 3px 8px; border-radius: 2px; white-space: nowrap; }
+
+/* ---------- Hall ---------- */
+.hall { background: var(--ink-2); }
+.hall-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: clamp(16px, 3vw, 36px); align-items: start; }
+.mauled-list { list-style: none; margin: 0; padding: 0; display: grid; }
+.mauled-list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; padding-block: 14px; border-top: 1px solid var(--line); align-items: baseline; }
+.mauled-list li:last-child { border-bottom: 1px solid var(--line); }
+.gamertag { font-weight: 700; font-size: 1.1rem; overflow-wrap: anywhere; position: relative; justify-self: start; }
+.gamertag::after { content: ""; position: absolute; left: -3px; right: -3px; top: 54%; height: 2px; background: var(--tiger); transform: rotate(-3deg); opacity: 0.9; }
+.mauled-list .result { font-family: var(--font-display); font-weight: 900; font-size: 1.35rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.mauled-list .meta { grid-column: 1 / -1; color: var(--bone-dim); font-size: 0.9rem; }
+.survivors { background: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 22px; display: grid; gap: 14px; }
+.survivors h3 { font-size: 1.5rem; font-weight: 900; letter-spacing: 0.04em; }
+.survivor { display: grid; gap: 2px; padding: 14px; background: var(--ink-3); border-radius: 3px; }
+.survivor .gt { font-weight: 700; font-size: 1.15rem; overflow-wrap: anywhere; }
+.survivor .meta { color: var(--bone-dim); font-size: 0.9rem; }
+.how { color: var(--bone-dim); font-size: 0.95rem; }
+.how b { color: var(--bone); }
+
+/* ---------- Footer ---------- */
+footer { padding-block: clamp(44px, 6vw, 72px) 36px; }
+.footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+.since { display: flex; align-items: end; gap: 18px; }
+.since .num { font-family: var(--font-display); font-weight: 900; font-size: clamp(5rem, 12vw, 8rem); line-height: 0.8; color: var(--tiger); font-variant-numeric: tabular-nums; }
+.since .lbl { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; font-size: clamp(1.1rem, 2.4vw, 1.5rem); line-height: 1.05; padding-bottom: 6px; }
+.socials { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 0; padding: 0; }
+.socials a { display: inline-block; padding: 8px 14px; border: 1px solid var(--line); border-radius: 3px; text-decoration: none; font-family: var(--font-display); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.socials a:hover { border-color: var(--tiger); color: var(--tiger); }
+.legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; padding-top: 22px; color: var(--bone-dim); font-size: 0.88rem; }
+
+/* ---------- Toast ---------- */
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--bone); color: var(--ink); font-weight: 600; padding: 12px 18px; border-radius: 3px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); z-index: 10; max-width: calc(100vw - 32px); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .live-grid, .hall-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 680px) {
+  .nav-links { display: none; }
+  .stats { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .stats .stat:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 480px) {
+  .products { grid-template-columns: minmax(0, 1fr); }
+  .board { gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .claws.animate path, .eye, .status.is-live .dot { animation: none; }
+  .btn { transition: none; }
+}
+</style>
+</head>
+<body>
+<header class="hero" id="top">
+  <svg class="hero-stripes" id="heroStripes" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"></svg>
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="#top">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M7 4 Q11 16 9 28"/><path d="M15 3 Q19 16 17 29"/><path d="M23 4 Q27 16 25 28"/></g></svg>
+        Mauled by the Tigers
+      </a>
+      <ul class="nav-links">
+        <li><a href="#live">Live</a></li>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#rivalry">Rivalry</a></li>
+        <li><a href="#hall">Hall of the Mauled</a></li>
+      </ul>
+      <span class="status" id="status"><span class="dot"></span><span id="statusText">Next stream</span></span>
+    </nav>
+
+    <div class="hero-inner">
+      <h1 class="wordmark">
+        <span class="maul">Mauled
+          <svg class="claws" id="claws" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path pathLength="1" d="M30 -2 Q40 50 52 104"/>
+            <path pathLength="1" d="M45 -4 Q55 48 67 103"/>
+            <path pathLength="1" d="M60 -2 Q70 50 82 104"/>
+          </svg>
+        </span>
+        <span class="rest">by the Tigers</span>
+      </h1>
+      <p class="lede">Two grown adults in tiger suits play console football, live, twice a week. Watch, pick a side, buy the shirt.</p>
+      <div class="cta-row">
+        <a class="btn btn-ink" href="#live">Watch live</a>
+        <a class="btn btn-ghost" href="#shop">Shop the merch</a>
+      </div>
+      <p class="tally" id="heroTally"></p>
+    </div>
+  </div>
+</header>
+
+<div class="band" aria-hidden="true"><svg id="band1" viewBox="0 0 1000 100" preserveAspectRatio="none"></svg></div>
+
+<main>
+  <section class="section" id="live">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><span class="dot" style="background: var(--live)"></span>Live</span>
+        <h2>Watch the tigers</h2>
+        <p>The stream plays right here, chat and all. When the tigers are asleep, the countdown tells you when they're back.</p>
+      </div>
+      <div class="live-grid">
+        <div class="player" id="player">
+          <svg class="player-stripes" id="playerStripes" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <div class="eyes a" aria-hidden="true"><div class="eye"><div class="pupil"></div></div><div class="eye"><div class="pupil"></div></div></div>
+          <div class="eyes b" aria-hidden="true"><div class="eye"><div class="pupil"></div></div><div class="eye"><div class="pupil"></div></div></div>
+          <div class="asleep">
+            <span class="label" id="asleepLabel">The tigers are asleep. Back in</span>
+            <span class="count" id="countdown">--</span>
+          </div>
+        </div>
+        <aside class="fixtures" aria-labelledby="fixturesTitle">
+          <h3 id="fixturesTitle">Coming up <span class="sample">Sample</span></h3>
+          <div class="fixture"><div class="when">Fri<span>9</span></div><div><p class="what">Clawrenson v Catty</p><p class="note">8pm. Best of five. Loser wears the hood all night.</p></div></div>
+          <div class="fixture"><div class="when">Sun<span>11</span></div><div><p class="what">Challenge night</p><p class="note">6pm. Three viewers each take on a tiger.</p></div></div>
+          <div class="fixture"><div class="when">Fri<span>16</span></div><div><p class="what">The rematch</p><p class="note">8pm. Catty wants revenge for the 6–0.</p></div></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <div class="band" aria-hidden="true"><svg id="band2" viewBox="0 0 1000 100" preserveAspectRatio="none"></svg></div>
+
+  <section class="section shop" id="shop">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Shop</span>
+        <h2>Merch for the mauled</h2>
+        <p>Everything is printed when you order it, so nothing sits in a warehouse. Scoreline shirts are only on sale for the week after the match.</p>
+      </div>
+      <div class="products">
+        <article class="product">
+          <div class="art on-tiger">
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <path fill="#15100c" d="M62 32 L86 22 Q100 36 114 22 L138 32 L172 60 L152 84 L140 74 L140 180 L60 180 L60 74 L48 84 L28 60 Z"/>
+              <g fill="#ef6b1b" font-family="Big Shoulders Display, Impact, sans-serif" font-weight="900" text-anchor="middle">
+                <text x="100" y="98" font-size="14" textLength="34" lengthAdjust="spacingAndGlyphs">I WAS</text>
+                <text x="100" y="128" font-size="32" textLength="70" lengthAdjust="spacingAndGlyphs">MAULED</text>
+                <text x="100" y="146" font-size="11" textLength="66" lengthAdjust="spacingAndGlyphs">BY THE TIGERS</text>
+              </g>
+            </svg>
+          </div>
+          <h3>I Was Mauled tee</h3>
+          <p class="desc">Black heavyweight cotton, orange print. The one everyone gets first.</p>
+          <div class="buy-row"><span class="price">£24</span><button class="btn btn-buy" type="button" data-buy>Buy</button></div>
+        </article>
+
+        <article class="product">
+          <div class="art on-ink">
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <path fill="#ef6b1b" d="M64 42 Q100 6 136 42 L150 46 L178 124 L158 132 L144 96 L144 184 L56 184 L56 96 L42 132 L22 124 L50 46 Z"/>
+              <path fill="#cf5513" d="M74 44 Q100 22 126 44 Q100 58 74 44 Z"/>
+              <g fill="none" stroke="#15100c" stroke-width="8" stroke-linecap="round"><path d="M80 86 Q88 120 82 160"/><path d="M100 82 Q108 120 102 164"/><path d="M120 86 Q128 120 122 160"/></g>
+            </svg>
+          </div>
+          <h3>Claw hoodie</h3>
+          <p class="desc">Tiger orange with three claw marks down the front. Hood up for away games.</p>
+          <div class="buy-row"><span class="price">£42</span><button class="btn btn-buy" type="button" data-buy>Buy</button></div>
+        </article>
+
+        <article class="product">
+          <div class="art on-sand">
+            <span class="badge" id="dropBadge">Limited</span>
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <path fill="#f4e9d6" stroke="#15100c" stroke-width="2" d="M62 32 L86 22 Q100 36 114 22 L138 32 L172 60 L152 84 L140 74 L140 180 L60 180 L60 74 L48 84 L28 60 Z"/>
+              <g fill="#15100c" font-family="Big Shoulders Display, Impact, sans-serif" font-weight="900" text-anchor="middle">
+                <text x="100" y="104" font-size="20" textLength="56" lengthAdjust="spacingAndGlyphs">MAULED</text>
+                <text x="100" y="140" font-size="38" fill="#ef6b1b" textLength="52" lengthAdjust="spacingAndGlyphs">6–0</text>
+                <text x="100" y="156" font-size="9" textLength="60" lengthAdjust="spacingAndGlyphs">FRI 2 OCT 2026</text>
+              </g>
+            </svg>
+          </div>
+          <h3>Mauled 6–0 tee</h3>
+          <p class="desc">Clawrenson 6, Catty 0. Printed with the date. Gone when the week's up.</p>
+          <div class="buy-row"><span class="price">£26</span><button class="btn btn-buy" type="button" data-buy>Buy</button></div>
+        </article>
+
+        <article class="product">
+          <div class="art on-tiger">
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <path fill="#15100c" d="M54 70 L62 36 L84 60 Z"/>
+              <path fill="#15100c" d="M146 70 L138 36 L116 60 Z"/>
+              <path fill="#f4e9d6" d="M60 62 L64 46 L74 58 Z"/>
+              <path fill="#f4e9d6" d="M140 62 L136 46 L126 58 Z"/>
+              <path fill="#15100c" d="M44 136 Q44 58 100 56 Q156 58 156 136 Z"/>
+              <g fill="none" stroke="#ef6b1b" stroke-width="6" stroke-linecap="round"><path d="M76 74 Q82 94 78 116"/><path d="M100 68 Q106 92 102 118"/><path d="M124 74 Q130 94 126 116"/></g>
+              <rect x="38" y="132" width="124" height="34" rx="4" fill="#2c211a"/>
+              <g stroke="#15100c" stroke-width="3"><path d="M52 132 V166"/><path d="M68 132 V166"/><path d="M84 132 V166"/><path d="M100 132 V166"/><path d="M116 132 V166"/><path d="M132 132 V166"/><path d="M148 132 V166"/></g>
+            </svg>
+          </div>
+          <h3>Tiger ears beanie</h3>
+          <p class="desc">Ribbed knit with ears on top, so you can match the tigers from the sofa.</p>
+          <div class="buy-row"><span class="price">£18</span><button class="btn btn-buy" type="button" data-buy>Buy</button></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="band" aria-hidden="true"><svg id="band3" viewBox="0 0 1000 100" preserveAspectRatio="none"></svg></div>
+
+  <section class="section" id="rivalry">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Head to head <span class="sample">Sample</span></span>
+        <h2>The rivalry</h2>
+        <p>Every Friday the two tigers play each other. Win by three goals or more and it goes in the book as a mauling.</p>
+      </div>
+
+      <div class="board" id="board"></div>
+      <div class="stats" id="stats"></div>
+
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Date</th><th>Score</th><th>Winner</th><th></th></tr></thead>
+          <tbody id="results"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hall" id="hall">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Viewer challenges <span class="sample">Sample</span></span>
+        <h2>Hall of the Mauled</h2>
+        <p>On Sundays, viewers take on a tiger. Lose and your name goes up here. Win and you join a much shorter list.</p>
+      </div>
+      <div class="hall-grid">
+        <ol class="mauled-list" id="mauled"></ol>
+        <aside class="survivors" aria-labelledby="survivorsTitle">
+          <h3 id="survivorsTitle">Survivors</h3>
+          <div id="survivorList"></div>
+          <p class="how"><b>Want a go?</b> Drop your gamertag in chat at the start of a Sunday stream. We pick three, and each one plays a tiger.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="band" aria-hidden="true"><svg id="band4" viewBox="0 0 1000 100" preserveAspectRatio="none"></svg></div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="since">
+        <span class="num" id="sinceNum">0</span>
+        <span class="lbl">Days since<br>last mauling</span>
+      </div>
+      <ul class="socials">
+        <li><a href="#" data-soon>Twitch</a></li>
+        <li><a href="#" data-soon>YouTube</a></li>
+        <li><a href="#" data-soon>TikTok</a></li>
+        <li><a href="#" data-soon>Instagram</a></li>
+      </ul>
+    </div>
+    <div class="legal">
+      <span>© 2026 Mauled by the Tigers</span>
+      <span>Not affiliated with EA, FIFA or any football club. No real tigers were involved.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+/* ---------- Site details: edit these ---------- */
+const SITE = {
+  tigers: ["Mark Clawrenson", "David Catty"],
+  // Weekly streams, UK time. day: 0 = Sunday ... 5 = Friday
+  streams: [ { day: 5, hour: 20, minute: 0 }, { day: 0, hour: 18, minute: 0 } ],
+  streamLengthMins: 180,
+  twitchChannel: "",                       // e.g. "mauledbythetigers"
+  domains: ["mauledbythetigers.co.uk", "www.mauledbythetigers.co.uk"],
+  record: { wins: [14, 11], draws: 3, goals: [61, 54] },   // all-time, sample
+  results: [                                // newest first, sample
+    { date: "2026-10-02", score: [6, 0] },
+    { date: "2026-09-25", score: [2, 3] },
+    { date: "2026-09-18", score: [1, 4] },
+    { date: "2026-09-11", score: [2, 2] },
+    { date: "2026-09-04", score: [3, 1] },
+    { date: "2026-08-28", score: [0, 1] }
+  ],
+  mauled: [                                 // viewers the tigers beat, sample
+    { tag: "TopBinsTerry", tiger: 1, score: [5, 1], date: "2026-10-04" },
+    { tag: "NutmegNeil", tiger: 0, score: [4, 0], date: "2026-10-04" },
+    { tag: "HoofItHarry", tiger: 1, score: [3, 0], date: "2026-09-27" },
+    { tag: "PanenkaPaul", tiger: 0, score: [6, 2], date: "2026-09-27" },
+    { tag: "OffsideOllie", tiger: 0, score: [4, 1], date: "2026-09-20" },
+    { tag: "BackPostBen", tiger: 1, score: [3, 0], date: "2026-09-20" }
+  ],
+  survivors: [ { tag: "KeeperKaz", tiger: 0, score: [2, 1], date: "2026-09-13" } ],
+  drop: { endsUK: "2026-10-09T20:00" }      // scoreline shirt comes off sale
+};
+
+/* ---------- Time helpers (UK wall clock) ---------- */
+const DAY = 86400000;
+function ukNow() {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/London", hourCycle: "h23",
+    year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit"
+  }).formatToParts(new Date());
+  const p = {}; parts.forEach(x => { p[x.type] = x.value; });
+  return Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute, +p.second);
+}
+function ukDate(iso) { const [d, t = "00:00"] = iso.split("T"); const [y, m, dd] = d.split("-").map(Number); const [h, mi] = t.split(":").map(Number); return Date.UTC(y, m - 1, dd, h, mi); }
+const fmtDate = ms => new Date(ms).toLocaleDateString("en-GB", { timeZone: "UTC", weekday: "short", day: "numeric", month: "short" });
+
+function streamState(now) {
+  const base = new Date(now);
+  let next = Infinity, live = false;
+  for (const s of SITE.streams) {
+    for (let k = -1; k <= 7; k++) {
+      const start = Date.UTC(base.getUTCFullYear(), base.getUTCMonth(), base.getUTCDate() + k, s.hour, s.minute);
+      if (new Date(start).getUTCDay() !== s.day) continue;
+      const end = start + SITE.streamLengthMins * 60000;
+      if (now >= start && now < end) live = true;
+      if (start > now && start < next) next = start;
+    }
+  }
+  return { live, next };
+}
+function countdownText(ms) {
+  const s = Math.max(0, Math.floor(ms / 1000));
+  const d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60), sec = s % 60;
+  const pad = n => String(n).padStart(2, "0");
+  return (d ? d + "d " : "") + pad(h) + ":" + pad(m) + ":" + pad(sec);
+}
+
+/* ---------- Stripes ---------- */
+function rng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function wedge(edge, pos, width, len, drift, W, H) {
+  const a = pos - width / 2, b = pos + width / 2;
+  if (edge === "right") return `M${W},${a} Q${W - len * 0.55},${a + drift * 0.4} ${W - len},${pos + drift} Q${W - len * 0.5},${b + drift * 0.7} ${W},${b} Z`;
+  if (edge === "left") return `M0,${a} Q${len * 0.55},${a + drift * 0.4} ${len},${pos + drift} Q${len * 0.5},${b + drift * 0.7} 0,${b} Z`;
+  if (edge === "top") return `M${a},0 Q${a + drift * 0.4},${len * 0.55} ${pos + drift},${len} Q${b + drift * 0.7},${len * 0.5} ${b},0 Z`;
+  return `M${a},${H} Q${a + drift * 0.4},${H - len * 0.55} ${pos + drift},${H - len} Q${b + drift * 0.7},${H - len * 0.5} ${b},${H} Z`;
+}
+function paint(svg, specs, fill) {
+  svg.innerHTML = specs.map(d => `<path d="${d}" fill="${fill}"/>`).join("");
+}
+function drawBand(id, seed) {
+  const r = rng(seed), out = [], n = 26;
+  for (let i = 0; i < n; i++) {
+    const x = (i + 0.5) * (1000 / n) + (r() - 0.5) * 14;
+    const edge = i % 2 ? "top" : "bottom";
+    out.push(wedge(edge, x, 10 + r() * 14, 45 + r() * 45, (r() - 0.5) * 22, 1000, 100));
+  }
+  paint(document.getElementById(id), out, "#15100c");
+}
+function drawHero() {
+  const r = rng(7), out = [];
+  for (let i = 0; i < 9; i++) out.push(wedge("right", 60 + i * 112 + r() * 30, 34 + r() * 40, 160 + r() * 260, (r() - 0.5) * 120, 1000, 1000));
+  for (let i = 0; i < 5; i++) out.push(wedge("left", 120 + i * 190 + r() * 40, 24 + r() * 26, 30 + r() * 50, (r() - 0.5) * 50, 1000, 1000));
+  paint(document.getElementById("heroStripes"), out, "#cf5513");
+  const r2 = rng(21), dark = [];
+  for (let i = 0; i < 8; i++) dark.push(wedge("top", 40 + i * 130 + r2() * 40, 30 + r2() * 30, 120 + r2() * 260, (r2() - 0.5) * 140, 1000, 1000));
+  for (let i = 0; i < 8; i++) dark.push(wedge("bottom", 90 + i * 130 + r2() * 40, 30 + r2() * 30, 100 + r2() * 220, (r2() - 0.5) * 140, 1000, 1000));
+  paint(document.getElementById("playerStripes"), dark, "#1c1810");
+}
+
+/* ---------- Render ---------- */
+const [A, B] = SITE.tigers;
+const el = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+function renderRivalry() {
+  const { wins, draws, goals } = SITE.record;
+  const lead = wins[0] === wins[1] ? -1 : (wins[0] > wins[1] ? 0 : 1);
+  el("heroTally").innerHTML = `Head to head <span>${esc(A)} <b>${wins[0]}</b></span><span>${esc(B)} <b>${wins[1]}</b></span>`;
+  el("board").innerHTML = `
+    <div class="side ${lead === 0 ? "lead" : ""}"><span class="name">${esc(A)}</span><span class="wins">${wins[0]}</span><span class="sub">Wins</span></div>
+    <div class="mid"><div class="draws">${draws}</div><div class="sub">Draws</div></div>
+    <div class="side right ${lead === 1 ? "lead" : ""}"><span class="name">${esc(B)}</span><span class="wins">${wins[1]}</span><span class="sub">Wins</span></div>`;
+
+  const maulings = SITE.results.filter(x => Math.abs(x.score[0] - x.score[1]) >= 3);
+  const biggest = SITE.results.slice().sort((x, y) => Math.abs(y.score[0] - y.score[1]) - Math.abs(x.score[0] - x.score[1]))[0];
+  const bigWinner = biggest.score[0] > biggest.score[1] ? A : B;
+  const form = SITE.results.slice(0, 5).map(x => x.score[0] > x.score[1] ? "w" : x.score[0] === x.score[1] ? "d" : "l");
+  el("stats").innerHTML = `
+    <div class="stat"><span class="k">Goals</span><span class="v">${goals[0]}–${goals[1]}</span></div>
+    <div class="stat"><span class="k">Biggest mauling</span><span class="v">${Math.max(...biggest.score)}–${Math.min(...biggest.score)}<small>${esc(bigWinner)}</small></span></div>
+    <div class="stat"><span class="k">${esc(A)} last five</span><span class="form">${form.map(f => `<span class="chip ${f}">${f.toUpperCase()}</span>`).join("")}</span></div>`;
+
+  el("results").innerHTML = SITE.results.map(x => {
+    const [a, b] = x.score, margin = Math.abs(a - b);
+    const winner = a === b ? "Draw" : (a > b ? A : B);
+    return `<tr><td>${fmtDate(ukDate(x.date))}</td><td class="score">${a}<span class="vs">–</span>${b}</td><td>${esc(winner)}</td><td>${margin >= 3 ? '<span class="tag">Mauling</span>' : ""}</td></tr>`;
+  }).join("");
+}
+
+function renderHall() {
+  el("mauled").innerHTML = SITE.mauled.map(x => `
+    <li><span class="gamertag">${esc(x.tag)}</span><span class="result">${x.score[0]}–${x.score[1]}</span>
+    <span class="meta">Mauled by ${esc(SITE.tigers[x.tiger])}, ${fmtDate(ukDate(x.date))}</span></li>`).join("");
+  el("survivorList").innerHTML = SITE.survivors.length
+    ? SITE.survivors.map(x => `<div class="survivor"><span class="gt">${esc(x.tag)}</span><span class="meta">Beat ${esc(SITE.tigers[x.tiger])} ${x.score[0]}–${x.score[1]}, ${fmtDate(ukDate(x.date))}</span></div>`).join("")
+    : `<div class="survivor"><span class="gt">Nobody yet</span></div>`;
+}
+
+function renderSince(now) {
+  const dates = [...SITE.results.filter(x => Math.abs(x.score[0] - x.score[1]) >= 3), ...SITE.mauled].map(x => ukDate(x.date));
+  const last = Math.max(...dates);
+  const today = Date.UTC(new Date(now).getUTCFullYear(), new Date(now).getUTCMonth(), new Date(now).getUTCDate());
+  el("sinceNum").textContent = Math.max(0, Math.round((today - last) / DAY));
+}
+
+function tick() {
+  const now = ukNow();
+  const { live, next } = streamState(now);
+  const status = el("status");
+  status.classList.toggle("is-live", live);
+  el("statusText").textContent = live ? "Live now" : "Next stream " + countdownText(next - now).replace(/:\d\d$/, "");
+  el("asleepLabel").textContent = live ? "The tigers are live" : "The tigers are asleep. Back in";
+  el("countdown").textContent = live ? "Watch now" : countdownText(next - now);
+
+  const end = ukDate(SITE.drop.endsUK), left = end - now;
+  el("dropBadge").textContent = left <= 0 ? "Sold out" : left < DAY ? "Last day" : `${Math.ceil(left / DAY)} days left`;
+}
+
+/* ---------- Live player on the real domain ---------- */
+function mountPlayer() {
+  const host = location.hostname;
+  if (!SITE.twitchChannel || !SITE.domains.includes(host)) return;
+  el("player").innerHTML = `<iframe title="Live stream" allowfullscreen src="https://player.twitch.tv/?channel=${encodeURIComponent(SITE.twitchChannel)}&parent=${host}"></iframe>`;
+}
+
+/* ---------- Eyes follow the pointer ---------- */
+function eyes() {
+  const pupils = [...document.querySelectorAll(".pupil")];
+  window.addEventListener("pointermove", e => {
+    pupils.forEach(p => {
+      const eye = p.parentElement.getBoundingClientRect();
+      const cx = eye.left + eye.width / 2, cy = eye.top + eye.height / 2;
+      const dx = e.clientX - cx, dy = e.clientY - cy, dist = Math.hypot(dx, dy) || 1;
+      const max = eye.width * 0.28;
+      const k = Math.min(1, dist / 300);
+      p.style.transform = `translate(${dx / dist * max * k}px, ${dy / dist * max * 0.25 * k}px)`;
+    });
+  }, { passive: true });
+}
+
+/* ---------- Toast for things that aren't wired up yet ---------- */
+let toastTimer;
+function toast(msg) {
+  const t = el("toast"); t.textContent = msg; t.hidden = false;
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.hidden = true; }, 2600);
+}
+document.querySelectorAll("[data-buy]").forEach(b => b.addEventListener("click", () => toast("The shop opens soon. Check back after the next stream.")));
+document.querySelectorAll("[data-soon]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); toast(a.textContent + " link coming soon."); }));
+
+/* ---------- Boot ---------- */
+drawHero(); drawBand("band1", 3); drawBand("band2", 11); drawBand("band3", 19); drawBand("band4", 29);
+renderRivalry(); renderHall(); renderSince(ukNow()); mountPlayer(); eyes(); tick();
+setInterval(tick, 1000);
+if (!matchMedia("(prefers-reduced-motion: reduce)").matches) el("claws").classList.add("animate");
+</script>
+</body>
+</html>
